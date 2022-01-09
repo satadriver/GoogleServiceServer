@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\json">
+      <UniqueIdentifier>{c8b798e9-a7b9-44b2-8e8a-85ad187cc5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\json">
+      <UniqueIdentifier>{f733a449-1283-481f-b2a8-f2fc724814a7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GoogleServiceServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicFunction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DownloadApk.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DataProcess.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WatchDog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandProcess.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginWindow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdSendMessage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdUploadFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdDownloadFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Decomp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Additional.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FileWriter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DataListener.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandListener.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandUtils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketMaker.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdFileAccssor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NotifyDataServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CryptoUtils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Coder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FileOperator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Initor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="recommit.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Qrcode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpUtils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonParser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonSplit.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mysqlOper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DBCreator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BaiduLocation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReadLine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LargeFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Amr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="networkHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DataKeeper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="json\json_reader.cpp">
+      <Filter>源文件\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\json_value.cpp">
+      <Filter>源文件\json</Filter>
+    </ClCompile>
+    <ClCompile Include="json\json_writer.cpp">
+      <Filter>源文件\json</Filter>
+    </ClCompile>
+    <ClCompile Include="translate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Base64.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xmlParser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GoogleServiceServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicFunction.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DownloadApk.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataProcess.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QRCode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WatchDog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandProcess.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdSendMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdUploadFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdDownloadFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Decomp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Additional.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FileWriter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataListener.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandListener.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketMaker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdFileAccssor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NotifyDataServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CryptoUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Coder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FileOperator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Initor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="recommit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mysqlOper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="jsonParser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonSplit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DBCreator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BaiduLocation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FileReadLine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LargeFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Amr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="networkHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataKeeper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="json\autolink.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\config.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\features.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\forwards.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\json.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\json_batchallocator.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\reader.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\value.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\writer.h">
+      <Filter>头文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="translate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Base64.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xmlParser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GoogleServiceServer.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

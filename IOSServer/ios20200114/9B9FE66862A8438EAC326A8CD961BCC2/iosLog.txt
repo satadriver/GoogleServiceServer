@@ -1,0 +1,210 @@
+Tue Apr 28 00:27:40 2020 upload file:/Users/apple/Library/Developer/CoreSimulator/Devices/CC341DC8-61E0-4E50-9B74-E3AD48EDB06A/data/Containers/Data/Application/34B960B4-6948-4CA9-A64E-E79A64DF6F52/Documents/running.log size:288 ok
+Tue Apr 28 00:27:40 2020 MainWork end
+Tue Apr 28 00:27:40 2020 recv heartbeat error:0
+
+Tue Apr 28 00:27:58 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:03 2020 Failed to get token, error:Error Domain=NSCocoaErrorDomain Code=3010 "remote notifications are not supported in the simulator" UserInfo={NSLocalizedDescription=remote notifications are not supported in the simulator}
+Tue Apr 28 00:28:03 2020 applicationDidBecomeActive
+Tue Apr 28 00:28:07 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 location end
+Tue Apr 28 00:28:08 2020 location end
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 file:IMG_0001.JPG already loaded
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 file:IMG_0002.JPG already loaded
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 file:IMG_0003.JPG already loaded
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 file:IMG_0004.JPG already loaded
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:08 2020 file:IMG_0005.JPG already loaded
+Tue Apr 28 00:28:08 2020 total count:5,upload count:0
+Tue Apr 28 00:28:08 2020 getOriginalImages upload photo count:0
+Tue Apr 28 00:28:08 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:09 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 upload location ok
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 upload location ok
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:10 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:11 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:12 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:13 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:13 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:13 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:13 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:13 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:13 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:13 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:13 2020 recv heartbeat error:0
+
+Tue Apr 28 00:28:56 2020 didFinishLaunchingWithOptions
+Tue Apr 28 00:29:05 2020 recv heartbeat error:0
+
+Tue Apr 28 00:29:05 2020 Failed to get token, error:Error Domain=NSCocoaErrorDomain Code=3010 "remote notifications are not supported in the simulator" UserInfo={NSLocalizedDescription=remote notifications are not supported in the simulator}
+Tue Apr 28 00:29:05 2020 applicationDidBecomeActive
+Tue Apr 28 00:29:05 2020 recv heartbeat error:0
+
+Tue Apr 28 00:29:05 2020 recv heartbeat error:0
+
+Tue Apr 28 00:29:05 2020 upload file:/Users/apple/Library/Developer/CoreSimulator/Devices/CC341DC8-61E0-4E50-9B74-E3AD48EDB06A/data/Containers/Data/Application/214D5D56-A583-4845-AC79-1C8C0C9AD81E/Documents/1588004860_microaudio.wav size:171280 ok
+Tue Apr 28 00:29:28 2020 recv heartbeat error:0
+
+Tue Apr 28 00:32:28 2020 didFinishLaunchingWithOptions

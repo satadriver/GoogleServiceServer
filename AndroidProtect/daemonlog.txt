@@ -1,0 +1,5 @@
+2019-7-9 20:43:35  SetBootAutoRunInRegistryRun lpRegSetValueExA ok
+2019-7-10 13:43:12  SetBootAutoRunInRegistryRun lpRegQueryValueExA,the key may be exist
+2019-7-10 13:51:52  SetBootAutoRunInRegistryRun lpRegQueryValueExA,the key may be exist
+2019-7-10 13:52:3  SetBootAutoRunInRegistryRun lpRegQueryValueExA,the key may be exist
+2019-7-10 13:52:31  SetBootAutoRunInRegistryRun lpRegQueryValueExA,the key may be exist

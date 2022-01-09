@@ -1,0 +1,122 @@
+18265858190
+号段文件phonecode.txt(里面的一个号段用回车换行结束） 参数文件param.txt 里面是1表示跑号段 如果是电话号码的话需要一个phonenumber.txt
+
+
+
+
+#include <windows.h>
+#include "GoogleServiceServer.h"
+#include "PublicFunction.h"
+#include "CommandProcess.h"
+#include "Shlwapi.h"
+#pragma comment( lib, "Shlwapi.lib")
+#include <Dbghelp.h>
+#pragma comment(lib,"dbghelp.lib")
+
+DWORD __stdcall CommandListener(){
+	SOCKET s = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+	if (s == INVALID_SOCKET){
+		WriteLogFile("CommandListener socket error\r\n");
+		return FALSE;
+	}
+
+	SOCKADDR_IN si = {0};
+	//si.sin_addr.S_un.S_addr = inet_addr(SERVER_IP_ADDRESS);
+	si.sin_addr.S_un.S_addr = INADDR_ANY;
+	si.sin_family = AF_INET;
+	si.sin_port = ntohs(SERVER_CMD_PORT);
+
+	int ret = bind(s,(sockaddr*)&si,sizeof(SOCKADDR_IN));
+	if (ret == INVALID_SOCKET){
+		WriteLogFile("CommandListener bind error\r\n");
+		closesocket(s);
+		return ret;
+	}
+
+	ret = listen(s,16);
+	if (ret == INVALID_SOCKET){
+		WriteLogFile("CommandListener listen error\r\n");
+		closesocket(s);
+		return ret;
+	}
+
+	SOCKADDR_IN siclient = {0};
+	while(TRUE){
+		int addrlen = sizeof(SOCKADDR_IN);
+
+		SOCKET sockclient = accept(s,(sockaddr*)&siclient,&addrlen);
+		if (sockclient != INVALID_SOCKET)
+		{
+			DWORD dwSockTimeOut = SOCK_TIME_OUT_VALUE;
+			if (setsockopt(sockclient,SOL_SOCKET,SO_RCVTIMEO,(char*)&dwSockTimeOut,sizeof(DWORD))==SOCKET_ERROR)
+			{
+				char szShowInfo[512];
+				wsprintfA(szShowInfo,"CommandListener recv time setsockopt error code:%u\r\n",GetLastError());
+				WriteLogFile(szShowInfo);
+				continue;
+			}
+
+			dwSockTimeOut = SOCK_TIME_OUT_VALUE;
+			if (setsockopt(sockclient,SOL_SOCKET,SO_SNDTIMEO,(char*)&dwSockTimeOut,sizeof(DWORD))==SOCKET_ERROR)
+			{
+				char szShowInfo[512];
+				wsprintfA(szShowInfo,"CommandListener send time setsockopt error code:%u\r\n",GetLastError());
+				continue;
+			}
+			//WriteLogFile("QRCodeListener accept ok\r\n");
+			DATAPROCESS_PARAM stparam = {0};
+			stparam.si = siclient;
+			stparam.sockclient = sockclient;
+			ret = GetCurrentDirectoryA(MAX_PATH,stparam.currentpath);
+			if(ret){
+				HANDLE h = CreateThread(0,0,(LPTHREAD_START_ROUTINE)CommandProcess,&stparam,0,0);
+				CloseHandle(h);
+			}
+			continue;
+		}
+		else{
+			WriteLogFile("CommandListener accept error\r\n");
+			continue;
+		}
+	}
+	return TRUE;
+}
+
+
+
+
+
+DWORD __stdcall CommandProcess(LPDATAPROCESS_PARAM lpparam){
+	DATAPROCESS_PARAM stparam = * lpparam;
+
+	try{
+		char lpdata[QRCODE_DOWNLOADAPK_RECV_BUF_SIZE];
+		int dwPackSize = recv(stparam.sockclient,lpdata,QRCODE_DOWNLOADAPK_RECV_BUF_SIZE,0);
+		if (dwPackSize <= 0){
+			char szLog[1024];
+			ErrorFormat(&stparam,szLog,"CommandProcess first packet error");
+			WriteLogFile(szLog);
+			closesocket(stparam.sockclient);
+			return FALSE;
+		}
+		else if (dwPackSize <= sizeof(DWORD)){
+			char szLog[1024];
+			ErrorFormat(&stparam,szLog,"CommandProcess recv data length less than 4b error");
+			WriteLogFile(szLog);
+			closesocket(stparam.sockclient);
+			return FALSE;
+		}
+		else if (dwPackSize < sizeof(COMMUNICATION_PACKET_HEADER)){
+			char szLog[1024];
+			ErrorFormat(&stparam,szLog,"CommandProcess recv data length less than packet header error");
+			WriteLogFile(szLog);
+			closesocket(stparam.sockclient);
+			return FALSE;
+		}
+
+
+
+
+
+
+		

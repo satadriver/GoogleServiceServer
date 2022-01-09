@@ -1,0 +1,283 @@
+
+Windows XP系列全下载(均为MSDN原版)
+正版windows xp sp3 下载大全（附：正版密钥）
+
+微软MSDN Windows XP Professional下载
+
+Windows XP Professional 简体中文 （最原始版本，无SP）【505.63MB】
+
+文件名：CN_WINXP_PRO_ISO.img
+
+ 大小：530186240字节
+
+ SHA1：73800FE8959F40361BAE3A6553CC66D27D78722E
+
+下载地址：ed2k://|file|CN_WINXP_PRO_ISO.img|530186240|7855069CE4216615D761654E2B75A4F7|/
+
+下载说明：将地址复制到迅雷里的新建任务栏里即可
+
+ 
+
+Windows XP Professional with SP2简体中文【600.08MB】
+
+ 文件名：sc_winxp_pro_with_sp2.iso
+
+ 大小：629227520字节
+
+ SHA1：92934976213BB9201057281A200F84127BE0050D
+
+下载地址：ed2k://|file|sc_winxp_pro_with_sp2.iso|629227520|505B810E128351482AF8B83AC4D04FD2|/
+
+ 
+
+Windows XP Professional with SP2 VOL简体中文【592.56MB】
+
+文件名：sc_win_xp_pro_with_sp2_vl.iso
+
+ 大小：621346816字节
+
+ SHA1：C0ADDD927B5D1F93DCE9C455FD6B26EAC7391BE9
+
+下载地址：ed2k://|file|sc_win_xp_pro_with_sp2_vl.iso|621346816|6F27DB53806D79FE37A0EDEC04AA9B05|/
+
+附上安装密钥：
+
+ B66VY-4D94T-TPPD4-43F72-8X4FY
+
+ VCFQD-V9FX9-46WVH-K3CD4-4J3JM
+
+ HCQ9D-TVCWX-X9QRG-J4B2Y-GR2TT
+
+ 
+
+
+Windows XP Professional with SP3简体中文【601.04MB】
+
+ 文件名：zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_x14-80404.iso
+
+ 大小：630239232字节
+
+ SHA1：69DBF131116760932DCF132ADE111D6B45778098
+
+下载地址：ed2k://|file|zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_x14-80404.iso|630239232|CD0900AFA058ACB6345761969CBCBFF4|/
+
+ 
+
+ 
+
+Windows XP Professional with SP3 VOL简体中文【601.04MB】
+
+ 文件名：zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_vl_x14-74070.iso
+
+ 大小：630237184字节
+
+ SHA1：D142469D0C3953D8E4A6A490A58052EF52837F0F
+
+下载地址：ed2k://|file|zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_vl_x14-74070.iso|630237184|EC51916C9D9B8B931195EE0D6EE9B40E|/
+
+VOL安装密钥：
+
+ MRX3F-47B9T-2487J-KWKMF-RPWBY
+
+ M6TF9-8XQ2M-YQK9F-7TBB2-XGG88
+
+附：关于VOL解析
+      VOL是Volume Licensing for Organizations 的简称，中文即“团体批量许可证”。根据这个许可，当企业或者政府需要大量购买微软操作系统时可以获得优惠。这种产品的光盘卷标带有"VOL"字样，就取 "Volume"前3个字母，以表明是批量。这种版本根据购买数量等又细分为“开放式许可证”(Open License)、“选择式许可证(Select License)”、“企业协议(Enterprise Agreement)”、“学术教育许可证(Academic Volume Licensing)”等5种版本。根据VOL计划规定， VOL产品是不需要激活的。
+
+ 
+
+ 
+
+ 
+
+自2001年Windows XP面世以来，微软共发行了五种版本：
+
+    ——Windows XP Home Edition
+    ——Windows XP Professional
+    ——Windows XP Tablet PC Edition
+    ——Windows XP 64-Bit Edition 
+    ——Windows XP Media Center Edition
+
+
+——Windows XP SP1   2002年9月25日发布 
+——Windows XP SP2   2004年8月22日发布 
+——Windows XP SP3   2008年5月6日发布
+
+----------------------------------------------------
+ Windows XP Home Edition(家庭版)
+ed2k://|file|CN_WINXP_HOME_ISO.img|513515520|58373CA20ABB0438AF5858AEBF22E983|/
+    SHA1: BACE4A06BDB82C3B0EDE14730CE031CF53BA8B95
+
+ Windows XP with sp2 Home Edition(家庭版)
+ed2k://|file|sc_winxp_home_with_sp2.iso|611358720|B80F4CCF312420015FFD5740057085B0|/
+    SHA1: F31B766CDBBB84826C09216A4B8CC7DFB1428493
+
+ 
+
+Windows XP with sp3 Home Edition(家庭版)
+ed2k://|file|zh-hans_windows_xp_home_with_service_pack_3_x86_cd_x14-92408.iso|611794944|81DC0766DFB4082E18F1985D535C14D6|/
+    SHA1: F15EF466B1D87B1FFDADC246B8CE82287BD15ED5
+
+ 
+
+Windows XP pro (第一发行原版)
+ed2k://|file|CN_WINXP_PRO_ISO.img|530186240|7855069CE4216615D761654E2B75A4F7|/
+    SHA1: 73800FE8959F40361BAE3A6553CC66D27D78722E
+
+ 
+
+Windows XP pro with sp2 VOL
+ed2k://|file|sc_win_xp_pro_with_sp2_vl.iso|621346816|6F27DB53806D79FE37A0EDEC04AA9B05|/
+    SHA1: C0ADDD927B5D1F93DCE9C455FD6B26EAC7391BE9
+
+ 
+
+Windows XP pro with sp3 VOL
+ed2k://|file|zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_vl_x14-74070.iso|630237184|EC51916C9D9B8B931195EE0D6EE9B40E|/
+    SHA1: D142469D0C3953D8E4A6A490A58052EF52837F0F
+
+ 
+
+Windows XP pro with sp2(零售版)
+ed2k://|file|sc_winxp_pro_with_sp2.iso|629227520|505B810E128351482AF8B83AC4D04FD2|/
+    SHA1: 92934976213BB9201057281A200F84127BE0050D
+
+ 
+
+Windows XP pro with sp3(零售版)
+ed2k://|file|zh-hans_windows_xp_professional_with_service_pack_3_x86_cd_x14-80404.iso|630239232|CD0900AFA058ACB6345761969CBCBFF4|/
+    SHA1: 69DBF131116760932DCF132ADE111D6B45778098
+
+-----------------------------------------------------------------------------------------
+
+适用于以上版本的Key:
+
+VOL版KEY：
+
+MRX3F-47B9T-2487J-KWKMF-RPWBY
+
+BYCMB-R844W-KJBQX-J3D9F-V3Y6G
+
+D9Y7R-K3TM4-WTMY3-2BF8R-7MHVG
+
+ 
+
+零售版KEY：
+
+H49F9-8RTVG-MTCVH-G2MFK-C47C8
+
+RK7J8-2PGYQ-P47VV-V6PMB-F6XPQ
+
+MBVJW-DX8J2-BGTP4-G28XX-GHPTJ
+
+安装后需要通过破解才能激活
+
+ 
+
+家庭版KEY：
+
+BQJG2-2MJT7-H7F6K-XW98B-4HQRQ
+
+KWXXK-KD43C-86JQV-6BM33-FBMXG
+
+安装后需要通过破解才能激活
+
+ 
+
+-----------------------------------------------------------------------------------------
+
+ Windows XP 64位
+
+ 
+
+Windows XP pro with sp2 64位 VOL (英文版)迅雷下载地址：
+thunder://QUFodHRwOi8vc29mdHdhcmUubmN1LmVkdS50dy85Ni9FTi9pc28vWFBfNjRiaXQuaXNvWlo=
+
+Windows XP Edition with sp2 64位VOL(英文版)
+ed2k://|file|en_win_xp_pro_x64_with_sp2_vl_X13-41611.iso|628168704|5573EEA1F40FE32E46F4615B6A4E71D8|/
+    SHA1: CD9479E1DBAD7F26B8BDCF97E4AA71CBB8DE932B
+
+Windows XP Edition 64位VOL(英文版)
+ed2k://|file|en_windows_xp_professional_x64.iso|614168576|DCEE7C1436E165867DDC75FBA1790BC7|/
+    SHA1: A70B118316A9A451B966A082E7C1DD0E8018718D
+
+ 
+
+64位XP中文包下载地址：
+
+http://download.microsoft.com/download/f/d/a/fdac56ee-928a-4d51-9d6d-c7c64e9f5bae/ARMMUIx3.iso
+
+ 
+
+64位CD-Key:
+
+VCFQD-V9FX9-46WVH-K3CD4-4J3JM
+
+B66VY-4D94T-TPPD4-43F72-8X4FY
+
+ 
+
+ --------------------------------------------------------------------------------------------------------------
+
+ 
+
+ 
+
+Windows XP Tablet PC Edition
+
+CD1:
+ed2k://|file|sc_win_xp_tabletpc_2005_disc1_vl.iso|621346816|6F27DB53806D79FE37A0EDEC04AA9B05|/
+    SHA1: 92934976213BB9201057281A200F84127BE0050D
+
+CD2:
+
+ed2k://|file|sc_win_xp_tabletPC_2005_disc2_vl.iso|233066496|F691BBA9A376B281CDE19FD2E6EF36F9|/
+    SHA1: 31DA9C6D716AF4DC788496077709E274F8DE6820
+
+ 
+
+Windows XP Tablet PC Edition 2005(CD1)
+ed2k://|file|sc_winxp_tablet_2005_CD1.iso|629227520|505B810E128351482AF8B83AC4D04FD2|/
+或ed2k://|file|sc_win_xp_tabletpc_2005_disc1_vl.iso|621346816|6F27DB53806D79FE37A0EDEC04AA9B05|/
+
+Windows XP Tablet PC Edition 2005(CD2)
+ed2k://|file|sc_winxp_tablet_2005_CD2.iso|233066496|F691BBA9A376B281CDE19FD2E6EF36F9|/
+或ed2k://|file|sc_win_xp_tabletPC_2005_disc2_vl.iso|233066496|F691BBA9A376B281CDE19FD2E6EF36F9|/
+
+ 
+
+Windows XP Tablet PC Edition 2005有效安装密钥：
+WDTJD-DJKG3-6GFV2-J47FD-6DH4M
+
+VBGB7-9RDHQ-B322V-Q26VJ-BB3KG
+
+WQCFM-RGHG9-PPP4Q-JG8Y8-6D7D8
+
+HG8F3-B7432-CR7CM-JP8V2-BYMJM
+
+MPV7Q-8GPT9-HRTQT-X4879-D3QBD
+
+ 
+
+ 
+
+ 
+
+ 
+
+Windows XP Media Center Edition 2005正式版(媒体中心版)
+
+CD1点击下载：
+
+ftp://big.3800cc.net/down1/jc/sc_winxp_mce_2005_cd1.iso
+    SHA1: 8D6A1AA1871C49314CB9DF4899E025CA63058FC0
+CD2点击下载：
+
+ftp://big.3800cc.net/down1/jc/sc_winxp_mce_2005_cd2.iso
+    SHA1: 01B8242AC47BC04D1940869D5B06FDFF30B370C6
+媒体中心版一定要用DXW9P-7TP7K-97M9K-WCD38-6XFR6进行安装，不然无法安装CD2的.
+
+ 
+
+https://www.cnblogs.com/yangkai-cn/p/4017276.html
+

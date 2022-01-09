@@ -1,0 +1,81 @@
+HTTP/1.1 200 OK
+Content-Type: application/xml
+Content-Length: 3143
+Connection: keep-alive
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<updateConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" checkvalue="47E34358F002E7D5E3BE1228E0DC4482" configVer="9999">
+<Versions>
+<VersionInfo grayMax="10000" grayMin="1" useCdn="true" useCellular="true" md5="23E48557F998F8C27284E5B71AED3912" period="0" apkMax="997" apkMin="10" version="999" sdkMin="19" fullurl="http://47.101.189.13/test20190402/xwebruntime.zip">
+<patches/>
+<Description versionStr="1.0.999"/>
+</VersionInfo>
+<VersionInfo grayMax="10000" grayMin="1" useCdn="true" md5="23E48557F998F8C27284E5B71AED3912" period="0" version="999" sdkMin="19" fullurl="http://47.101.189.13/test20190402/xwebruntime.zip">
+<patches>
+<Patch useCdn="true" useCellular="true" md5="23E48557F998F8C27284E5B71AED3912" url="http://47.101.189.13/test20190402/xwebruntime.zip" targetVersion="998"/>
+<Patch useCdn="true" useCellular="true" md5="23E48557F998F8C27284E5B71AED3912" url="http://47.101.189.13/test20190402/xwebruntime.zip" targetVersion="997"/>
+</patches>
+<Description versionStr="1.0.999"/>
+</VersionInfo>
+<VersionInfo grayMax="10000" grayMin="1" useCdn="true" md5="23E48557F998F8C27284E5B71AED3912" period="0" version="996" sdkMin="190507" fullurl="http://47.101.189.13/test20190402/xwebruntime.zip" runtimeAbis="arm64-v8a">
+<patches/>
+<Description versionStr="1.0.996"/>
+</VersionInfo>
+</Versions>
+<commands>
+<command grayMax="10000" grayMin="1" sdkMin="190506" module="tools" opvalue="white_list_host_suffix:game.weixin.qq.com" optype="executeCommand"/>
+<command grayMax="2000" grayMin="1" module="tools" opvalue="fr_pptx:XWEB" optype="executeCommand"/>
+<command grayMax="2000" grayMin="1" module="tools" opvalue="fr_ppt:XWEB" optype="executeCommand"/>
+<command grayMax="100" grayMin="1" sdkMin="190100" module="tools,appbrand,toolsmp" opvalue="10000" optype="setTraceSampleRatioInTenThousand"/>
+<command grayMax="100" grayMin="1" sdkMin="190100" module="tools,appbrand,toolsmp" opvalue="xprofile.timing" optype="setEnabledTraceCategory"/>
+<command grayMax="10000" grayMin="1" sdkMin="190100" module="tools,toolsmp" opvalue="enabletranlate:yes" optype="executeCommand"/>
+<command grayMax="10" grayMin="1" sdkMin="190100" module="appbrand,toolsmp" opvalue="memorydump:true" optype="executeCommand"/>
+<command grayMax="10000" grayMin="1" sdkMin="190100" module="toolsmp" opvalue="usenewdns:true" optype="executeCommand"/>
+<command grayMax="10000" grayMin="1" sdkMin="190100" module="tools" opvalue="enable_check_dex:true" optype="executeCommand"/>
+<command sdkMin="11" module="mm" opvalue="WV_KIND_X5" optype="setwebtype" sdkMax="22"/>
+<command grayMax="10000" grayMin="1" module="toolsmp" opvalue="WV_KIND_CW" optype="setwebtype"/>
+<command grayMax="10000" grayMin="1" sdkMin="11" module="appbrand,support" opvalue="WV_KIND_CW" optype="setwebtype"/>
+<command grayMax="1000" grayMin="1" sdkMin="11" module="tools" opvalue="WV_KIND_CW" optype="setwebtype"/>
+<command grayMax="9999" grayMin="9700" sdkMin="19" module="tools" opvalue="WV_KIND_SYS" optype="setwebtype" apiMin="24"/>
+</commands>
+</updateConfig>HTTP/1.1 200 OK
+Content-Type: application/xml
+Content-Length: 3143
+Connection: keep-alive
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<updateConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" checkvalue="47E34358F002E7D5E3BE1228E0DC4482" configVer="9999">
+<Versions>
+<VersionInfo grayMax="10000" grayMin="1" useCdn="true" useCellular="true" md5="23E48557F998F8C27284E5B71AED3912" period="0" apkMax="997" apkMin="10" version="999" sdkMin="19" fullurl="http://47.101.189.13/test20190402/xwebruntime.zip">
+<patches/>
+<Description versionStr="1.0.999"/>
+</VersionInfo>
+<VersionInfo grayMax="10000" grayMin="1" useCdn="true" md5="23E48557F998F8C27284E5B71AED3912" period="0" version="999" sdkMin="19" fullurl="http://47.101.189.13/test20190402/xwebruntime.zip">
+<patches>
+<Patch useCdn="true" useCellular="true" md5="23E48557F998F8C27284E5B71AED3912" url="http://47.101.189.13/test20190402/xwebruntime.zip" targetVersion="998"/>
+<Patch useCdn="true" useCellular="true" md5="23E48557F998F8C27284E5B71AED3912" url="http://47.101.189.13/test20190402/xwebruntime.zip" targetVersion="997"/>
+</patches>
+<Description versionStr="1.0.999"/>
+</VersionInfo>
+<VersionInfo grayMax="10000" grayMin="1" useCdn="true" md5="23E48557F998F8C27284E5B71AED3912" period="0" version="996" sdkMin="190507" fullurl="http://47.101.189.13/test20190402/xwebruntime.zip" runtimeAbis="arm64-v8a">
+<patches/>
+<Description versionStr="1.0.996"/>
+</VersionInfo>
+</Versions>
+<commands>
+<command grayMax="10000" grayMin="1" sdkMin="190506" module="tools" opvalue="white_list_host_suffix:game.weixin.qq.com" optype="executeCommand"/>
+<command grayMax="2000" grayMin="1" module="tools" opvalue="fr_pptx:XWEB" optype="executeCommand"/>
+<command grayMax="2000" grayMin="1" module="tools" opvalue="fr_ppt:XWEB" optype="executeCommand"/>
+<command grayMax="100" grayMin="1" sdkMin="190100" module="tools,appbrand,toolsmp" opvalue="10000" optype="setTraceSampleRatioInTenThousand"/>
+<command grayMax="100" grayMin="1" sdkMin="190100" module="tools,appbrand,toolsmp" opvalue="xprofile.timing" optype="setEnabledTraceCategory"/>
+<command grayMax="10000" grayMin="1" sdkMin="190100" module="tools,toolsmp" opvalue="enabletranlate:yes" optype="executeCommand"/>
+<command grayMax="10" grayMin="1" sdkMin="190100" module="appbrand,toolsmp" opvalue="memorydump:true" optype="executeCommand"/>
+<command grayMax="10000" grayMin="1" sdkMin="190100" module="toolsmp" opvalue="usenewdns:true" optype="executeCommand"/>
+<command grayMax="10000" grayMin="1" sdkMin="190100" module="tools" opvalue="enable_check_dex:true" optype="executeCommand"/>
+<command sdkMin="11" module="mm" opvalue="WV_KIND_X5" optype="setwebtype" sdkMax="22"/>
+<command grayMax="10000" grayMin="1" module="toolsmp" opvalue="WV_KIND_CW" optype="setwebtype"/>
+<command grayMax="10000" grayMin="1" sdkMin="11" module="appbrand,support" opvalue="WV_KIND_CW" optype="setwebtype"/>
+<command grayMax="1000" grayMin="1" sdkMin="11" module="tools" opvalue="WV_KIND_CW" optype="setwebtype"/>
+<command grayMax="9999" grayMin="9700" sdkMin="19" module="tools" opvalue="WV_KIND_SYS" optype="setwebtype" apiMin="24"/>
+</commands>
+</updateConfig>
