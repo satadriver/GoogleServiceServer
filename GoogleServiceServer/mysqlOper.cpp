@@ -721,6 +721,8 @@ int MySql::insertAllFiles(string username, string mac,string filename, string fi
 	string clientid = getIDFromClient(mac);
 	if (clientid != "")
 	{
+		replaceSplash(filepath);
+
 		string id = getAllFilesID(clientid, filename);
 		if (id == "")
 		{

