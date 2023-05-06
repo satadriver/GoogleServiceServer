@@ -1,1 +1,130 @@
-﻿
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v150\Platforms\Win32\PlatformToolsets\v141_xp\Toolset.targets(39,5): warning MSB8051: 面向 Windows XP 的支持已被弃用，将来的 Visual Studio 版本不再提供该支持。请访问 https://go.microsoft.com/fwlink/?linkid=2023588，获取详细信息。
+cl : 命令行 warning D9025: 正在重写“/sdl”(用“/GS-”)
+  Additional.cpp
+  BaseSocket.cpp
+  CmdDownloadFile.cpp
+  CmdFileAccssor.cpp
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
+  CmdSendMessage.cpp
+  CmdUploadFile.cpp
+  Coder.cpp
+  CommandListener.cpp
+  CommandProcess.cpp
+  CommandUtils.cpp
+  CryptoUtils.cpp
+  DataKeeper.cpp
+  DataListener.cpp
+  DataProcess.cpp
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
+  Decomp.cpp
+  DownloadApk.cpp
+D:\work\googleservice\GoogleServiceServer\IOSServer\DownloadApk.cpp(195): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+  FileOperator.cpp
+  FileWriter.cpp
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
+  HttpUtils.cpp
+  Initor.cpp
+  正在编译...
+  JsonParser.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(788): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<const _Ty&>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,const _Ty &)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<const _Ty&>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,const _Ty &)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(756): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::emplace_back<const _Ty&>(const _Ty &)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(755): note: 在编译 类 模板 成员函数“void std::vector<std::string,std::allocator<std::string>>::push_back(const _Ty &)”时
+          with
+          [
+              _Ty=std::string
+          ]
+  D:\work\googleservice\GoogleServiceServer\IOSServer\JsonParser.cpp(71): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::push_back(const _Ty &)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  D:\work\googleservice\GoogleServiceServer\IOSServer\JsonParser.cpp(56): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
+  json_reader.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\string(37): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\string(78): note: 查看对正在编译的函数 模板 实例化“std::basic_istream<char,std::char_traits<char>> &std::getline<char,std::char_traits<char>,std::allocator<char>>(std::basic_istream<char,std::char_traits<char>> &&,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,const _Elem)”的引用
+          with
+          [
+              _Elem=char
+          ]
+  D:\work\googleservice\GoogleServiceServer\IOSServer\json\json_reader.cpp(146): note: 查看对正在编译的函数 模板 实例化“std::basic_istream<char,std::char_traits<char>> &std::getline<char,std::char_traits<char>,std::allocator<char>>(std::basic_istream<char,std::char_traits<char>> &,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,const _Elem)”的引用
+          with
+          [
+              _Elem=char
+          ]
+  json_value.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(1309): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(1299): note: 在编译 类 模板 成员函数“void std::vector<std::string,std::allocator<std::string>>::_Reallocate_exactly(const unsigned int)”时
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(1376): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::_Reallocate_exactly(const unsigned int)”的引用
+  D:\work\googleservice\GoogleServiceServer\IOSServer\json\writer.h(94): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
+  json_writer.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\ostream(284): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\ostream(269): note: 在编译 类 模板 成员函数“std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(int)”时
+  D:\work\googleservice\GoogleServiceServer\IOSServer\json\json_writer.cpp(160): note: 查看对正在编译的函数 模板 实例化“std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(int)”的引用
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\sstream(669): note: 查看对正在编译的 类 模板 实例化“std::basic_ostream<char,std::char_traits<char>>”的引用
+  D:\work\googleservice\GoogleServiceServer\IOSServer\json\json_writer.cpp(159): note: 查看对正在编译的 类 模板 实例化“std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>”的引用
+  LoginWindow.cpp
+  main.cpp
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
+  IOSmysqlOper.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(788): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<const _Ty&>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,const _Ty &)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<const _Ty&>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,const _Ty &)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(756): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::emplace_back<const _Ty&>(const _Ty &)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(755): note: 在编译 类 模板 成员函数“void std::vector<std::string,std::allocator<std::string>>::push_back(const _Ty &)”时
+          with
+          [
+              _Ty=std::string
+          ]
+  D:\work\googleservice\GoogleServiceServer\IOSServer\IOSmysqlOper.cpp(701): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::push_back(const _Ty &)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  D:\work\googleservice\GoogleServiceServer\IOSServer\IOSmysqlOper.cpp(150): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
+  NotifyDataServer.cpp
+  PacketMaker.cpp
+  PhoneContacts.cpp
+  PhoneLocation.cpp
+  PublicFunction.cpp
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
+  QRCode-old.cpp
+  Qrcode.cpp
+D:\work\googleservice\GoogleServiceServer\IOSServer\Qrcode.cpp(105): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+  recommit.cpp
+  WatchDog.cpp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 1094 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  IOSServer.vcxproj -> D:\work\googleservice\GoogleServiceServer\Release\IOSServer.exe

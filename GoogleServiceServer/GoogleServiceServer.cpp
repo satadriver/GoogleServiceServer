@@ -42,7 +42,7 @@ int test() {
 
 	string loc = "[{\"status\":\"NETWORK\",\"time\":\"2020-03-05 18:17:03\",\"latitude\":\"36.811953\",\"longitude\":\"118.283757\"}]";
 
-	vector<string> *arraydata = 0;
+	vector<string>* arraydata = 0;
 	string mydata = loc;
 	arraydata = JsonParser::getJsonFromArray(mydata);
 	for (unsigned int i = 0; i < arraydata->size(); i++)
@@ -53,17 +53,17 @@ int test() {
 		string status = "";
 		string address = "";
 
-		int ret = JsonSplit::splitLocation(arraydata->at(i), lat, lon, status, timenow,address);
+		int ret = JsonSplit::splitLocation(arraydata->at(i), lat, lon, status, timenow, address);
 
 		int utc = loctime2utc(timenow);		//2019-07-09 14:07:50	
 
 		string addr = BaiduLocation::getAddrFromLoc(lat, lon);
 	}
 
-	vector <string> *array = new vector<string>;
+	vector <string>* array = new vector<string>;
 	int arraysize = array->size();
 
-	char * data = 0;
+	char* data = 0;
 	int filesize = 0;
 	int ret = 0;
 	ret = FileOperator::fileReader("deviceinfo.json", &data, &filesize);
@@ -78,8 +78,8 @@ int test() {
 
 
 
-DWORD __stdcall InitProgram(){
-	
+DWORD __stdcall InitProgram() {
+
 
 
 	char szShowInfo[1024];
@@ -103,15 +103,15 @@ DWORD __stdcall InitProgram(){
 	if (gLocalIP == 0)
 	{
 		gLocalIP = INADDR_ANY;
-		
-		wsprintfA(szShowInfo,"not found ip config file:%s error\r\n",IP_CONFIG_FILE);
+
+		wsprintfA(szShowInfo, "not found ip config file:%s error\r\n", IP_CONFIG_FILE);
 		WriteLogFile(szShowInfo);
 	}
 
 
 	char szcurdir[MAX_PATH] = { 0 };
 	GetModuleFileNameA(0, szcurdir, MAX_PATH);
-	char * lpchar = strrchr(szcurdir, '\\');
+	char* lpchar = strrchr(szcurdir, '\\');
 	if (lpchar)
 	{
 		*(lpchar + 1) = 0;
@@ -119,24 +119,24 @@ DWORD __stdcall InitProgram(){
 	}
 	//GetCurrentDirectoryA(MAX_PATH,szcurdir);
 	//SetCurrentDirectoryA(szcurdir);
-	
+
 	char tmppath[MAX_PATH];
-	lstrcpyA(tmppath,szcurdir);
-	lstrcatA(tmppath,"\\");
-	lstrcatA(tmppath,COMMAND_DIR_NAME);
-	lstrcatA(tmppath,"\\");
+	lstrcpyA(tmppath, szcurdir);
+	lstrcatA(tmppath, "\\");
+	lstrcatA(tmppath, COMMAND_DIR_NAME);
+	lstrcatA(tmppath, "\\");
 	iRet = MakeSureDirectoryPathExists(tmppath);
 
-	lstrcpyA(tmppath,szcurdir);
-	lstrcatA(tmppath,"\\");
-	lstrcatA(tmppath,UPLOAD_FILE_DIR_NAME);
-	lstrcatA(tmppath,"\\");
+	lstrcpyA(tmppath, szcurdir);
+	lstrcatA(tmppath, "\\");
+	lstrcatA(tmppath, UPLOAD_FILE_DIR_NAME);
+	lstrcatA(tmppath, "\\");
 	iRet = MakeSureDirectoryPathExists(tmppath);
 
-	lstrcpyA(tmppath,szcurdir);
-	lstrcatA(tmppath,"\\");
-	lstrcatA(tmppath,DOWNLOAD_FILE_DIR_NAME);
-	lstrcatA(tmppath,"\\");
+	lstrcpyA(tmppath, szcurdir);
+	lstrcatA(tmppath, "\\");
+	lstrcatA(tmppath, DOWNLOAD_FILE_DIR_NAME);
+	lstrcatA(tmppath, "\\");
 	iRet = MakeSureDirectoryPathExists(tmppath);
 
 	iRet = Initor::OpenFireWallPort();
@@ -154,12 +154,12 @@ DWORD __stdcall InitProgram(){
 
 #ifdef USE_MYSQL
 	MySql::initLock();
-	Translate translate;
-	translate.mainLoop(&translate);
-
+	Translate* translate = new Translate();
+	//translate->mainLoop(translate);
+	CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)translate->mainLoop, translate, 0, 0));
 
 	CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)DataKeeper::recommit, 0, 0, 0));
-	
+
 #endif
 
 #ifdef _DEBUG
@@ -172,7 +172,7 @@ DWORD __stdcall InitProgram(){
 
 
 
-int __stdcall WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, __in LPSTR lpCmdLine, __in int nShowCmd ){
+int __stdcall WinMain(__in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, __in LPSTR lpCmdLine, __in int nShowCmd) {
 	int ret = InitProgram();
 	if (ret == FALSE)
 	{
@@ -181,25 +181,25 @@ int __stdcall WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstanc
 
 #ifdef NEED_LOGIN_WINDOW
 	int iRet = GetSecondsFromStartDate();
-	iRet = DialogBoxParamA(hInstance,(LPSTR)IDD_DIALOG1,0,(DLGPROC)LoginWindow,0);
+	iRet = DialogBoxParamA(hInstance, (LPSTR)IDD_DIALOG1, 0, (DLGPROC)LoginWindow, 0);
 	int error = GetLastError();
 	if (iRet == FALSE && ERROR == FALSE)
 	{
 		ExitProcess(0);
 	}
 
-	CloseHandle(CreateThread(0,0,(LPTHREAD_START_ROUTINE)CheckProductValidation,0,0,0));
+	CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)CheckProductValidation, 0, 0, 0));
 #endif
 
 	CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)CommandListener::Commandlistener, 0, 0, 0));
 
-	CloseHandle(CreateThread(0,0,(LPTHREAD_START_ROUTINE)QRCode::QRCodeListener,0,0,0));
+	CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)QRCode::QRCodeListener, 0, 0, 0));
 
-	CloseHandle(CreateThread(0,0,(LPTHREAD_START_ROUTINE)DataListener::DataProcessListener,0,0,0));
+	CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)DataListener::DataProcessListener, 0, 0, 0));
 
 	//CloseHandle(CreateThread(0,0,(LPTHREAD_START_ROUTINE)DownloadApk::DownloadApkListener,0,0,0));
 
-	CloseHandle(CreateThread(0,0,(LPTHREAD_START_ROUTINE)WatchDog::RefreshOnlineInfo,0,0,0));
+	CloseHandle(CreateThread(0, 0, (LPTHREAD_START_ROUTINE)WatchDog::RefreshOnlineInfo, 0, 0, 0));
 
 	WriteLogFile("program start ok\r\n");
 
@@ -207,7 +207,7 @@ int __stdcall WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstanc
 	{
 		Sleep(-1);
 	}
-	
+
 	WSACleanup();
 	return TRUE;
 }
@@ -216,7 +216,7 @@ int __stdcall WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstanc
 /*
 C运行时库（C Run-Time Library）
 在windows环境下，VC++提供的C Run-Time Library又分为动态运行时库和静态运行时库。
-动态运行时库主要是DLL库文件msvcrt.dll 
+动态运行时库主要是DLL库文件msvcrt.dll
 静态运行时库对应的主要文件是libc.lib(Single thread static library, retail version) 和
 LIBCMT.LIB (Multithread static library, retail version)
 
