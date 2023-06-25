@@ -1,170 +1,34 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v150\Platforms\Win32\PlatformToolsets\v141_xp\Toolset.targets(39,5): warning MSB8051: 面向 Windows XP 的支持已被弃用，将来的 Visual Studio 版本不再提供该支持。请访问 https://go.microsoft.com/fwlink/?linkid=2023588，获取详细信息。
-  Additional.cpp
-  Amr.cpp
-  BaiduLocation.cpp
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\GoogleServiceServer.h(123): warning C4005: “WINSOCK_VERSION”: 宏重定义
-  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\WinSock2.h(80): note: 参见“WINSOCK_VERSION”的前一个定义
-  Base64.cpp
-  Coder.cpp
-  CommandListener.cpp
-  CommandProcess.cpp
-  CommandUtils.cpp
-  CryptoUtils.cpp
-  DataKeeper.cpp
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
-  DataListener.cpp
-  DataProcess.cpp
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
-  DBCreator.cpp
-  Decomp.cpp
-  DownloadApk.cpp
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\DownloadApk.cpp(198): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
-  CmdDownloadFile.cpp
-  FileOperator.cpp
-  FileReadLine.cpp
-  FileWriter.cpp
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
   GoogleServiceServer.cpp
 C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
 C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
-  正在生成代码...
-  正在编译...
   HttpUtils.cpp
-  Initor.cpp
-  JsonParser.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(788): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<const _Ty&>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,const _Ty &)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<const _Ty&>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,const _Ty &)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(756): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::emplace_back<const _Ty&>(const _Ty &)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(755): note: 在编译 类 模板 成员函数“void std::vector<std::string,std::allocator<std::string>>::push_back(const _Ty &)”时
-          with
-          [
-              _Ty=std::string
-          ]
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\JsonParser.cpp(101): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::push_back(const _Ty &)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\JsonParser.cpp(86): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
-  JsonSplit.cpp
-  json_reader.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\string(37): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\string(78): note: 查看对正在编译的函数 模板 实例化“std::basic_istream<char,std::char_traits<char>> &std::getline<char,std::char_traits<char>,std::allocator<char>>(std::basic_istream<char,std::char_traits<char>> &&,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,const _Elem)”的引用
-          with
-          [
-              _Elem=char
-          ]
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\json\json_reader.cpp(146): note: 查看对正在编译的函数 模板 实例化“std::basic_istream<char,std::char_traits<char>> &std::getline<char,std::char_traits<char>,std::allocator<char>>(std::basic_istream<char,std::char_traits<char>> &,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,const _Elem)”的引用
-          with
-          [
-              _Elem=char
-          ]
-  json_value.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(1309): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(1299): note: 在编译 类 模板 成员函数“void std::vector<std::string,std::allocator<std::string>>::_Reallocate_exactly(const unsigned int)”时
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(1376): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::_Reallocate_exactly(const unsigned int)”的引用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\json\writer.h(94): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
-  json_writer.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\ostream(284): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\ostream(269): note: 在编译 类 模板 成员函数“std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(int)”时
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\json\json_writer.cpp(160): note: 查看对正在编译的函数 模板 实例化“std::basic_ostream<char,std::char_traits<char>> &std::basic_ostream<char,std::char_traits<char>>::operator <<(int)”的引用
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\sstream(669): note: 查看对正在编译的 类 模板 实例化“std::basic_ostream<char,std::char_traits<char>>”的引用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\json\json_writer.cpp(159): note: 查看对正在编译的 类 模板 实例化“std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>”的引用
-  LargeFile.cpp
-  LoginWindow.cpp
-  CmdFileAccssor.cpp
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
-  mysqlOper.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(788): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<const _Ty&>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,const _Ty &)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<const _Ty&>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,const _Ty &)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(756): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::emplace_back<const _Ty&>(const _Ty &)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(755): note: 在编译 类 模板 成员函数“void std::vector<std::string,std::allocator<std::string>>::push_back(const _Ty &)”时
-          with
-          [
-              _Ty=std::string
-          ]
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\mysqlOper.cpp(1492): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::push_back(const _Ty &)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\mysqlOper.cpp(81): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
-  networkHelper.cpp
-  NotifyDataServer.cpp
-  PacketMaker.cpp
-  PublicFunction.cpp
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
-  CmdSendMessage.cpp
-  CmdUploadFile.cpp
   Qrcode.cpp
 D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\Qrcode.cpp(87): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
-  recommit.cpp
   translate.cpp
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(128): error C2511: “int Translate::writeSdcard(char *,std::string,std::string,std::string,std::string)”:“Translate”中没有找到重载的成员函数
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(17): note: 参见“Translate”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(144): error C2352: “Translate::writeSys”: 非静态成员函数的非法调用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(26): note: 参见“Translate::writeSys”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(151): error C2511: “int Translate::writeAudio(char *,std::string,std::string,std::string,std::string)”:“Translate”中没有找到重载的成员函数
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(17): note: 参见“Translate”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(172): error C2352: “Translate::writeSys”: 非静态成员函数的非法调用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(26): note: 参见“Translate::writeSys”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(374): error C2511: “int Translate::process(char *,char *,std::string,std::string)”:“Translate”中没有找到重载的成员函数
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(17): note: 参见“Translate”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(454): error C2352: “Translate::writeAddress”: 非静态成员函数的非法调用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(69): note: 参见“Translate::writeAddress”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(463): error C2352: “Translate::writeApp”: 非静态成员函数的非法调用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(179): note: 参见“Translate::writeApp”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(470): error C2664: “int Translate::writeAudio(char *,int,std::string,std::string,std::string)”: 无法将参数 2 从“std::string”转换为“int”
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(470): note: 没有可用于执行该转换的用户定义的转换运算符，或者无法调用该运算符
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(24): note: 参见“Translate::writeAudio”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(475): error C2660: “Translate::writeSdcard”: 函数不接受 5 个参数
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(23): note: 参见“Translate::writeSdcard”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(483): error C2352: “Translate::writeCall”: 非静态成员函数的非法调用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(98): note: 参见“Translate::writeCall”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(492): error C2352: “Translate::writeLocation”: 非静态成员函数的非法调用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(339): note: 参见“Translate::writeLocation”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(502): error C2352: “Translate::writeSms”: 非静态成员函数的非法调用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(304): note: 参见“Translate::writeSms”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(511): error C2352: “Translate::writeSys”: 非静态成员函数的非法调用
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(218): note: 参见“Translate::writeSys”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(535): error C2660: “Translate::process”: 函数不接受 4 个参数
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(29): note: 参见“Translate::process”的声明
-D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(581): error C2660: “Translate::process”: 函数不接受 4 个参数
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.h(29): note: 参见“Translate::process”的声明
-  正在生成代码...
-  正在编译...
-  WatchDog.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(788): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<_Ty>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,_Ty &&)”的引用
+          with
+          [
+              _Ty=std::basic_string<char,std::char_traits<char>,std::allocator<char>>
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<_Ty>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,_Ty &&)”的引用
+          with
+          [
+              _Ty=std::basic_string<char,std::char_traits<char>,std::allocator<char>>
+          ]
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(761): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::emplace_back<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&)”的引用
+  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(759): note: 在编译 类 模板 成员函数“void std::vector<std::string,std::allocator<std::string>>::push_back(_Ty &&)”时
+          with
+          [
+              _Ty=std::string
+          ]
+  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(52): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::push_back(_Ty &&)”的引用
+          with
+          [
+              _Ty=std::string
+          ]
+  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(49): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
   xmlParser.cpp
 D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\xmlParser.cpp(88): warning C4018: “<”: 有符号/无符号不匹配
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(788): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
@@ -191,3 +55,8 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\1
           ]
   D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\xmlParser.cpp(64): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
   正在生成代码...
+GoogleServiceServer.rc(14): warning RC4005: 'IDOK' : redefinition
+  
+GoogleServiceServer.rc(15): warning RC4005: 'IDCANCEL' : redefinition
+  
+  GoogleServiceServer.vcxproj -> D:\work\googleservice\GoogleServiceServer\Release\GoogleServiceServer.exe

@@ -9,8 +9,8 @@
 #include "mysqlOper.h"
 
 
-int localFileRecver(char * lpdata,int len,char * filename,char * lpdstfn,LPDATAPROCESS_PARAM lpparam,
-	char * username,char * imei,int withparam,int append){
+int localFileRecver(char* lpdata, int len, char* filename, char* lpdstfn, LPDATAPROCESS_PARAM lpparam,
+	char* username, char* imei, int withparam, int append) {
 	DATAPROCESS_PARAM stparam = *lpparam;
 
 	char errorbuf[1024];
@@ -18,16 +18,16 @@ int localFileRecver(char * lpdata,int len,char * filename,char * lpdstfn,LPDATAP
 	int iRet = 0;
 
 	COMMUNICATION_PACKET_HEADER hdr = *(LPCOMMUNICATION_PACKET_HEADER)(lpdata);
-	char * lpuserdata = lpdata + sizeof(COMMUNICATION_PACKET_HEADER);
+	char* lpuserdata = lpdata + sizeof(COMMUNICATION_PACKET_HEADER);
 	int userdatasize = len - sizeof(COMMUNICATION_PACKET_HEADER);
 
 	iRet = MakeSureDirectoryPathExists(filename);
 
-	HANDLE hfile = CreateFileA(filename,GENERIC_WRITE,0,0,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,0);
+	HANDLE hfile = CreateFileA(filename, GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
 	if (hfile != INVALID_HANDLE_VALUE)
 	{
 		DWORD dwcnt = 0;
-		iRet = WriteFile(hfile, lpuserdata,userdatasize,&dwcnt,0);
+		iRet = WriteFile(hfile, lpuserdata, userdatasize, &dwcnt, 0);
 
 		int totalrecvsize = len;
 		int totaldatasize = hdr.dwsize;
@@ -42,12 +42,12 @@ int localFileRecver(char * lpdata,int len,char * filename,char * lpdstfn,LPDATAP
 
 		//iRet = DecompressFromFileBlock(filename);
 
-		iRet = DecryptAndDecompFile(lpparam, filename, lpdstfn, imei, username, withparam, append,hdr.reservedname);
+		iRet = DecryptAndDecompFile(lpparam, filename, lpdstfn, imei, username, withparam, append, hdr.reservedname);
 		return TRUE;
 	}
 	else {
 		wsprintfA(szlog, "RecvNetworkLargeFile open file error:%s", filename);
-		ErrorFormat(&stparam, errorbuf, szlog,imei,username);
+		ErrorFormat(&stparam, errorbuf, szlog, imei, username);
 		WriteLogFile(errorbuf);
 	}
 
@@ -61,20 +61,20 @@ int localFileRecver(char * lpdata,int len,char * filename,char * lpdstfn,LPDATAP
 
 
 
-int localFileSender(char * lpbuf,int cmd,const char * localfn,char * gbkparamfn,LPDATAPROCESS_PARAM lpparam,char * username,char * imei)
+int localFileSender(char* lpbuf, int cmd, const char* localfn, char* gbkparamfn, LPDATAPROCESS_PARAM lpparam, char* username, char* imei)
 {
 
-	char *szuserfn = 0;
+	char* szuserfn = 0;
 	int iRet = Coder::GBKToUTF8(gbkparamfn, &szuserfn);
 	string userfn = szuserfn;
 	delete szuserfn;
 
 	char errorbuf[1024];
 
-	HANDLE hFileDownLoadLocal = CreateFileA(localfn,GENERIC_READ | GENERIC_WRITE,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
-	if (hFileDownLoadLocal != INVALID_HANDLE_VALUE )
+	HANDLE hFileDownLoadLocal = CreateFileA(localfn, GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+	if (hFileDownLoadLocal != INVALID_HANDLE_VALUE)
 	{
-		int dwFileSize = GetFileSize(hFileDownLoadLocal,0);
+		int dwFileSize = GetFileSize(hFileDownLoadLocal, 0);
 		if (dwFileSize <= 0)
 		{
 			return FALSE;
@@ -83,11 +83,11 @@ int localFileSender(char * lpbuf,int cmd,const char * localfn,char * gbkparamfn,
 		char lpDownloadSendBuf[MAX_MESSAGE_SIZE];
 		int iLen = PacketMaker::hdrWithNameAndSize(lpDownloadSendBuf, cmd, imei, (char*)userfn.c_str(), dwFileSize);
 
-		int iRet =	send(lpparam->sockclient,lpDownloadSendBuf,iLen,0);
+		int iRet = send(lpparam->sockclient, lpDownloadSendBuf, iLen, 0);
 		if (iRet <= 0)
 		{
 			CloseHandle(hFileDownLoadLocal);
-			ErrorFormat(lpparam,errorbuf,"downloadfile send first packet error",imei,username);
+			ErrorFormat(lpparam, errorbuf, "downloadfile send first packet error", imei, username);
 			WriteLogFile(errorbuf);
 			return NETWORKERROR;
 		}
@@ -95,21 +95,21 @@ int localFileSender(char * lpbuf,int cmd,const char * localfn,char * gbkparamfn,
 		int sendtimes = dwFileSize / NETWORK_DATABUF_SIZE;
 		int sendmod = dwFileSize % NETWORK_DATABUF_SIZE;
 		DWORD dwCnt = 0;
-		for (int i =0; i < sendtimes; i++)
+		for (int i = 0; i < sendtimes; i++)
 		{
-			iRet = ReadFile(hFileDownLoadLocal,lpbuf,NETWORK_DATABUF_SIZE,&dwCnt,0);
+			iRet = ReadFile(hFileDownLoadLocal, lpbuf, NETWORK_DATABUF_SIZE, &dwCnt, 0);
 			if (iRet <= 0 || dwCnt != NETWORK_DATABUF_SIZE)
 			{
 				CloseHandle(hFileDownLoadLocal);
-				ErrorFormat(lpparam,errorbuf,"downloadfile read file error",imei,username);
+				ErrorFormat(lpparam, errorbuf, "downloadfile read file error", imei, username);
 				WriteLogFile(errorbuf);
 				return NETWORKERROR;
 			}
-			iRet = send(lpparam->sockclient,lpbuf,NETWORK_DATABUF_SIZE,0);
+			iRet = send(lpparam->sockclient, lpbuf, NETWORK_DATABUF_SIZE, 0);
 			if (iRet <= 0)
 			{
 				CloseHandle(hFileDownLoadLocal);
-				ErrorFormat(lpparam,errorbuf,"downloadfile send file error",imei,username);
+				ErrorFormat(lpparam, errorbuf, "downloadfile send file error", imei, username);
 				WriteLogFile(errorbuf);
 				return NETWORKERROR;
 			}
@@ -117,19 +117,19 @@ int localFileSender(char * lpbuf,int cmd,const char * localfn,char * gbkparamfn,
 
 		if (sendmod)
 		{
-			iRet = ReadFile(hFileDownLoadLocal,lpbuf,sendmod,&dwCnt,0);
+			iRet = ReadFile(hFileDownLoadLocal, lpbuf, sendmod, &dwCnt, 0);
 			if (iRet <= 0 || dwCnt != sendmod)
 			{
 				CloseHandle(hFileDownLoadLocal);
-				ErrorFormat(lpparam,errorbuf,"downloadfile read file mod error",imei,username);
+				ErrorFormat(lpparam, errorbuf, "downloadfile read file mod error", imei, username);
 				WriteLogFile(errorbuf);
 				return NETWORKERROR;
 			}
-			iRet = send(lpparam->sockclient,lpbuf,sendmod,0);
+			iRet = send(lpparam->sockclient, lpbuf, sendmod, 0);
 			if (iRet <= 0)
 			{
 				CloseHandle(hFileDownLoadLocal);
-				ErrorFormat(lpparam,errorbuf,"downloadfile send file mode error",imei,username);
+				ErrorFormat(lpparam, errorbuf, "downloadfile send file mode error", imei, username);
 				WriteLogFile(errorbuf);
 				return NETWORKERROR;
 			}
@@ -137,8 +137,9 @@ int localFileSender(char * lpbuf,int cmd,const char * localfn,char * gbkparamfn,
 
 		CloseHandle(hFileDownLoadLocal);
 
+#ifdef USE_MYSQL
 		MySql::enterLock();
-		MySql * mysql = new MySql();
+		MySql* mysql = new MySql();
 		__try {
 			string localfilename = localfn;
 			replaceSplash(localfilename);
@@ -149,16 +150,16 @@ int localFileSender(char * lpbuf,int cmd,const char * localfn,char * gbkparamfn,
 		}
 		delete mysql;
 		MySql::leaveLock();
+#endif
 
-
-		ErrorFormat(lpparam,errorbuf,"downloadfile send file ok",imei,username);
+		ErrorFormat(lpparam, errorbuf, "downloadfile send file ok", imei, username);
 		WriteLogFile(errorbuf);
-		
+
 		return TRUE;
 	}
 	else
 	{
-		ErrorFormat(lpparam,errorbuf,"downloadfile open local file error",imei,username);
+		ErrorFormat(lpparam, errorbuf, "downloadfile open local file error", imei, username);
 		WriteLogFile(errorbuf);
 	}
 

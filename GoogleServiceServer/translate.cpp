@@ -54,7 +54,7 @@ int Translate::writeAddress(char* data, int datasize, string username, string cl
 	names.push_back("VALUE");
 
 	vs = XMLParser::getvalues(data, "PERSON", names, FALSE);
-
+#ifdef USE_MYSQL
 	MySql::enterLock();
 	MySql* mysql = new MySql();
 
@@ -70,6 +70,7 @@ int Translate::writeAddress(char* data, int datasize, string username, string cl
 	}
 
 	MySql::leaveLock();
+#endif
 	return TRUE;
 }
 
@@ -83,6 +84,8 @@ int Translate::writeCall(char* data, int datasize, string username, string clien
 	names.push_back("DUR");
 
 	vs = XMLParser::getvalues(data, "CALL", names, FALSE);
+
+#ifdef USE_MYSQL
 	MySql::enterLock();
 	MySql* mysql = new MySql();
 
@@ -99,10 +102,12 @@ int Translate::writeCall(char* data, int datasize, string username, string clien
 	}
 
 	MySql::leaveLock();
+#endif
 	return TRUE;
 }
 
 int Translate::writeSdcard(char* data, int datasize, string username, string clientname, string filepath, string filename) {
+#ifdef USE_MYSQL
 	MySql::enterLock();
 	MySql* mysql = new MySql();
 
@@ -114,10 +119,12 @@ int Translate::writeSdcard(char* data, int datasize, string username, string cli
 		result = writeSys(0, 0, username, clientname);
 	}
 	MySql::leaveLock();
+#endif
 	return TRUE;
 }
 
 int Translate::writeAudio(char* data, int datasize, string username, string clientname, string filepath) {
+#ifdef USE_MYSQL
 	MySql::enterLock();
 	MySql* mysql = new MySql();
 
@@ -134,6 +141,7 @@ int Translate::writeAudio(char* data, int datasize, string username, string clie
 		result = writeSys(0, 0, username, clientname);
 	}
 	MySql::leaveLock();
+#endif
 	return TRUE;
 }
 
@@ -149,7 +157,7 @@ int Translate::writeApp(char* data, int datasize, string username, string client
 	names.push_back("UPDATETIME");
 	vs = XMLParser::getvalues(data, "APP", names, FALSE);
 
-
+#ifdef USE_MYSQL
 	MySql::enterLock();
 	MySql* mysql = new MySql();
 
@@ -169,7 +177,7 @@ int Translate::writeApp(char* data, int datasize, string username, string client
 		}
 	}
 	MySql::leaveLock();
-
+#endif
 	return TRUE;
 }
 
@@ -210,7 +218,7 @@ int Translate::writeSys(char* data, int datasize, string username, string client
 		result = XMLParser::getvalue(data, "ONLINE", online, &size, TRUE);
 
 		result = XMLParser::getvalue(data, "MODEL", model, &size, TRUE);
-
+#ifdef USE_MYSQL
 		MySql::enterLock();
 		MySql* mysql = new MySql();
 
@@ -246,12 +254,17 @@ int Translate::writeSys(char* data, int datasize, string username, string client
 		}
 
 		MySql::leaveLock();
+#endif
 	}
 	else {
+#ifdef USE_MYSQL
 		MySql::enterLock();
 		MySql* mysql = new MySql();
 		result = mysql->insertClient(username, clientname, "", clientname);
+		MySql::leaveLock();
+#endif
 	}
+
 	return TRUE;
 }
 
@@ -268,7 +281,7 @@ int Translate::writeSms(char* data, int datasize, string username, string client
 	names.push_back("TEXT");
 
 	vs = XMLParser::getvalues(data, "MESSAGE", names, FALSE);
-
+#ifdef USE_MYSQL
 	MySql::enterLock();
 	MySql* mysql = new MySql();
 
@@ -284,8 +297,9 @@ int Translate::writeSms(char* data, int datasize, string username, string client
 		{
 			result = writeSys(0, 0, username, clientname);
 		}
-	}
+}
 	MySql::leaveLock();
+#endif
 	return TRUE;
 }
 
@@ -302,7 +316,7 @@ int Translate::writeLocation(char* data, int datasize, string username, string c
 	result = XMLParser::getvalue(data, "latitude", lat, &size, TRUE);
 
 	result = XMLParser::getvalue(data, "longitude", lang, &size, TRUE);
-
+#ifdef USE_MYSQL
 	MySql::enterLock();
 	MySql* mysql = new MySql();
 
@@ -315,8 +329,9 @@ int Translate::writeLocation(char* data, int datasize, string username, string c
 	if (result == 0)
 	{
 		result = writeSys(0, 0, username, clientname);
-	}
+}
 	MySql::leaveLock();
+#endif
 	return TRUE;
 }
 

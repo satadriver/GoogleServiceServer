@@ -11,7 +11,7 @@
 
 #define ANDROID_ICON  0x1100
 
-#define USE_MYSQL
+//#define USE_MYSQL
 
 
 #define UPLOADFILECOMMANDFILE		"uploadfilecommand.txt"
@@ -265,35 +265,35 @@
 
 #pragma pack(1)
 
-typedef struct{
+typedef struct {
 	SOCKET sockclient;
 	SOCKADDR_IN si;
 	char currentpath[MAX_PATH];
 	DWORD threadid;
-}DATAPROCESS_PARAM,*LPDATAPROCESS_PARAM;
+}DATAPROCESS_PARAM, * LPDATAPROCESS_PARAM;
 
 
-typedef struct{
+typedef struct {
 	DWORD dwsize;		//maybe larger than 2GB
 	int dwcmd;
 	int reservedname;
 	char imei[IMEI_IMSI_PHONE_SIZE];
 	char username[IMEI_IMSI_PHONE_SIZE];
-}COMMUNICATION_PACKET_HEADER,*LPCOMMUNICATION_PACKET_HEADER;
+}COMMUNICATION_PACKET_HEADER, * LPCOMMUNICATION_PACKET_HEADER;
 
 
-typedef struct{
+typedef struct {
 	int dwsize;
 	int dwcmd;
 	char imei[IMEI_IMSI_PHONE_SIZE];
-}COMMUNICATION_PACKET_HEADER_CMD,*LPCOMMUNICATION_PACKET_HEADER_CMD;
+}COMMUNICATION_PACKET_HEADER_CMD, * LPCOMMUNICATION_PACKET_HEADER_CMD;
 
 
-typedef struct{
+typedef struct {
 	WORD type;
 	DWORD len;
 	char szparam[MAX_PATH];
-}CMDNOTIFY,*LPCMDNOTIFY;
+}CMDNOTIFY, * LPCMDNOTIFY;
 
 typedef struct
 {
@@ -313,7 +313,7 @@ typedef struct
 
 	char ClientName[IMEI_IMSI_PHONE_SIZE];
 
-}ONLINEINFO,*LPONLINEINFO;
+}ONLINEINFO, * LPONLINEINFO;
 
 
 extern int gLocalIP;

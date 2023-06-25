@@ -12,7 +12,7 @@
 #include "mysqlOper.h"
 #include "FileOperator.h"
 
-int CommandUploadFile::CmdUploadFile(char * lpUploadRecvBuf, LPDATAPROCESS_PARAM lpparam,char * imei,char * username){
+int CommandUploadFile::CmdUploadFile(char* lpUploadRecvBuf, LPDATAPROCESS_PARAM lpparam, char* imei, char* username) {
 
 	char errorbuf[1024];
 
@@ -40,18 +40,18 @@ int CommandUploadFile::CmdUploadFile(char * lpUploadRecvBuf, LPDATAPROCESS_PARAM
 
 	char szData[MAX_MESSAGE_SIZE];
 	int iLen = PacketMaker::hdrWithName(szData, CMD_UPLOADFILE, imei, utf8cmd);
-	iRet = send(lpparam->sockclient,szData,iLen,0);
+	iRet = send(lpparam->sockclient, szData, iLen, 0);
 	if (iRet != iLen)
 	{
-		ErrorFormat(lpparam,errorbuf,"uploadfile send filename error",imei,username);
+		ErrorFormat(lpparam, errorbuf, "uploadfile send filename error", imei, username);
 		WriteLogFile(errorbuf);
 		return NETWORKERROR;;
 	}
 
-	int recvlen = recv(lpparam->sockclient,lpUploadRecvBuf,NETWORK_DATABUF_SIZE,0);
-	if (recvlen < sizeof(COMMUNICATION_PACKET_HEADER) )
+	int recvlen = recv(lpparam->sockclient, lpUploadRecvBuf, NETWORK_DATABUF_SIZE, 0);
+	if (recvlen < sizeof(COMMUNICATION_PACKET_HEADER))
 	{
-		ErrorFormat(lpparam,errorbuf,"uploadfile recv first packet error",imei,username);
+		ErrorFormat(lpparam, errorbuf, "uploadfile recv first packet error", imei, username);
 		WriteLogFile(errorbuf);
 		return NETWORKERROR;
 	}
@@ -60,31 +60,31 @@ int CommandUploadFile::CmdUploadFile(char * lpUploadRecvBuf, LPDATAPROCESS_PARAM
 	DWORD dwCommand = lphdr->dwcmd;
 	if (dwCommand == FILE_TRANSFER_NOT_FOUND)
 	{
-		ErrorFormat(lpparam,errorbuf,"uploadfile file not found error",imei,username);
+		ErrorFormat(lpparam, errorbuf, "uploadfile file not found error", imei, username);
 		WriteLogFile(errorbuf);
 		return FALSE;
 	}
 	else if (dwCommand == FILE_TRANSFER_TOO_BIG)
 	{
-		ErrorFormat(lpparam,errorbuf,"uploadfile file too big error",imei,username);
+		ErrorFormat(lpparam, errorbuf, "uploadfile file too big error", imei, username);
 		WriteLogFile(errorbuf);
 		return FALSE;
 	}
-	else if(dwCommand == CMD_UPLOADFILE)
+	else if (dwCommand == CMD_UPLOADFILE)
 	{
 		char szLocalUploadFileName[MAX_PATH];
-		lstrcpyA(szLocalUploadFileName,szCmd);
+		lstrcpyA(szLocalUploadFileName, szCmd);
 		PathStripPathA(szLocalUploadFileName);
 		string localfn = Additional::getUploadFileName(lpparam->currentpath, szLocalUploadFileName);
 
-		HANDLE hfuploadlocal = CreateFileA(localfn.c_str(),GENERIC_WRITE,0,0,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,0);
+		HANDLE hfuploadlocal = CreateFileA(localfn.c_str(), GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
 		if (hfuploadlocal != INVALID_HANDLE_VALUE)
 		{
-			char * lpdata = lpUploadRecvBuf + sizeof(COMMUNICATION_PACKET_HEADER);
+			char* lpdata = lpUploadRecvBuf + sizeof(COMMUNICATION_PACKET_HEADER);
 			int datablocksize = recvlen - sizeof(COMMUNICATION_PACKET_HEADER);
 
 			DWORD dwCnt = 0;
-			iRet = WriteFile(hfuploadlocal,lpdata,datablocksize,&dwCnt,0);
+			iRet = WriteFile(hfuploadlocal, lpdata, datablocksize, &dwCnt, 0);
 
 			int totalrecvsize = recvlen;
 
@@ -97,7 +97,8 @@ int CommandUploadFile::CmdUploadFile(char * lpUploadRecvBuf, LPDATAPROCESS_PARAM
 				{
 					iRet = WriteFile(hfuploadlocal, lpUploadRecvBuf, recvlen, &dwCnt, 0);
 					totalrecvsize += recvlen;
-				}else if (recvlen == 0)
+				}
+				else if (recvlen == 0)
 				{
 					CloseHandle(hfuploadlocal);
 					return NETWORKERROR;
@@ -112,9 +113,10 @@ int CommandUploadFile::CmdUploadFile(char * lpUploadRecvBuf, LPDATAPROCESS_PARAM
 
 			CloseHandle(hfuploadlocal);
 
+#ifdef USE_MYSQL
 			//iRet = DataProcess::DataNotify(localfn);
 			MySql::enterLock();
-			MySql * mysql = new MySql();
+			MySql* mysql = new MySql();
 			__try {
 				replaceSplash(localfn);
 				mysql->insertUploadFile(imei, localfn);
@@ -124,9 +126,9 @@ int CommandUploadFile::CmdUploadFile(char * lpUploadRecvBuf, LPDATAPROCESS_PARAM
 			}
 			delete mysql;
 			MySql::leaveLock();
+#endif
 
-
-			ErrorFormat(lpparam,errorbuf,"uploadfile ok",imei,username);
+			ErrorFormat(lpparam, errorbuf, "uploadfile ok", imei, username);
 			WriteLogFile(errorbuf);
 
 			return TRUE;
@@ -137,7 +139,7 @@ int CommandUploadFile::CmdUploadFile(char * lpUploadRecvBuf, LPDATAPROCESS_PARAM
 	}
 	else
 	{
-		ErrorFormat(lpparam,errorbuf,"uploadfile error unkown",imei,username);
+		ErrorFormat(lpparam, errorbuf, "uploadfile error unkown", imei, username);
 		WriteLogFile(errorbuf);
 	}
 

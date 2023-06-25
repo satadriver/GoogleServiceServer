@@ -1,30 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v150\Platforms\Win32\PlatformToolsets\v141_xp\Toolset.targets(39,5): warning MSB8051: 面向 Windows XP 的支持已被弃用，将来的 Visual Studio 版本不再提供该支持。请访问 https://go.microsoft.com/fwlink/?linkid=2023588，获取详细信息。
-  GoogleServiceServer.cpp
+  DataProcess.cpp
 C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(1540): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-hdBase>”的左侧
 C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include\Dbghelp.h(3056): warning C4091: “typedef ”: 没有声明变量时忽略“<unnamed-enum-sfImage>”的左侧
-  translate.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(788): warning C4530: 使用了 C++ 异常处理程序，但未启用展开语义。请指定 /EHsc
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<_Ty>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,_Ty &&)”的引用
-          with
-          [
-              _Ty=std::basic_string<char,std::char_traits<char>,std::allocator<char>>
-          ]
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(747): note: 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>> *std::vector<std::string,std::allocator<std::string>>::_Emplace_reallocate<_Ty>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> *const ,_Ty &&)”的引用
-          with
-          [
-              _Ty=std::basic_string<char,std::char_traits<char>,std::allocator<char>>
-          ]
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(761): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::emplace_back<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&)”的引用
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include\vector(759): note: 在编译 类 模板 成员函数“void std::vector<std::string,std::allocator<std::string>>::push_back(_Ty &&)”时
-          with
-          [
-              _Ty=std::string
-          ]
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(52): note: 查看对正在编译的函数 模板 实例化“void std::vector<std::string,std::allocator<std::string>>::push_back(_Ty &&)”的引用
-          with
-          [
-              _Ty=std::string
-          ]
-  D:\work\googleservice\GoogleServiceServer\GoogleServiceServer\translate.cpp(49): note: 查看对正在编译的 类 模板 实例化“std::vector<std::string,std::allocator<std::string>>”的引用
-  正在生成代码...
   GoogleServiceServer.vcxproj -> D:\work\googleservice\GoogleServiceServer\Debug\GoogleServiceServer.exe

@@ -18,7 +18,7 @@ using namespace std;
 
 DWORD __stdcall QRCode::QRCodeListener() {
 
-	__try{
+	__try {
 		int ret = 0;
 		int s = NetworkHelper::listener(SERVER_QRCODE_PORT);
 
@@ -72,25 +72,25 @@ DWORD __stdcall QRCode::QRCodeProcessMain(LPDATAPROCESS_PARAM lpparam) {
 	}
 	else {
 		*(lpdata + dwPackSize) = 0;
-		ret = QRCodeProcess(stparam,lpdata,dwPackSize);
+		ret = QRCodeProcess(stparam, lpdata, dwPackSize);
 	}
 
 	closesocket(stparam.sockclient);
 	return ret;
 }
 
-DWORD __stdcall QRCode::QRCodeProcess(DATAPROCESS_PARAM stparam,char * lpdata,int dwPackSize) {
+DWORD __stdcall QRCode::QRCodeProcess(DATAPROCESS_PARAM stparam, char* lpdata, int dwPackSize) {
 
 	int ret = 0;
 	char szLog[1024];
 
 	try {
-		if (memcmp(lpdata, "GET / ", 6) == 0 || memcmp(lpdata, "GET /qrcode/index.html", lstrlenA("GET /qrcode/index.html")) == 0)
+		if (memcmp(lpdata, "GET / ", 6) == 0 || memcmp(lpdata, "GET /index.html", lstrlenA("GET /index.html")) == 0)
 		{
-			string htmfn = string(stparam.currentpath) + "/qrcode/index.html";
+			string htmfn = string(stparam.currentpath) + "/index.html";
 
 			char szresponse[0x1000];
-			char *szresponseformat = "HTTP/1.1 200 OK\r\n"
+			char* szresponseformat = "HTTP/1.1 200 OK\r\n"
 				"Content-Type: text/html\r\n"
 				"Content-Length: %u\r\n"
 				"Connection: keep-alive\r\n\r\n%s";
@@ -114,8 +114,8 @@ DWORD __stdcall QRCode::QRCodeProcess(DATAPROCESS_PARAM stparam,char * lpdata,in
 			else {
 				return TRUE;
 			}
-		}	
-		else if (strstr(lpdata,".apk"))
+		}
+		else if (strstr(lpdata, ".apk"))
 		{
 			string url = HttpUtils::getFileNameFromUrl(lpdata, dwPackSize);
 
@@ -124,13 +124,13 @@ DWORD __stdcall QRCode::QRCodeProcess(DATAPROCESS_PARAM stparam,char * lpdata,in
 			int filesize = FileOperator::getfilesize(path);
 			if (filesize > 0)
 			{
-				char *szresponseformat = "HTTP/1.1 200 OK\r\n"
+				char* szresponseformat = "HTTP/1.1 200 OK\r\n"
 					//"Content-Type: application/zip\r\n"
 					"Content-Type: application/vnd.android.package-archive\r\n"
 					"Content-Length: %u\r\n"
 					"Connection: keep-alive\r\n\r\n";
 				int APK_FILE_BUF_SIZE = filesize + 4096;
-				char * lpbuf = new char[APK_FILE_BUF_SIZE];
+				char* lpbuf = new char[APK_FILE_BUF_SIZE];
 
 				int httphdrlen = sprintf(lpbuf, szresponseformat, filesize);
 

@@ -8,7 +8,8 @@
 using namespace std;
 
 int DBCreator::createaccount() {
-	MySql *mysql = new MySql();
+#ifdef USE_MYSQL
+	MySql* mysql = new MySql();
 
 	string cmd = "CREATE TABLE ph_accounts ("
 		"id int(11) NOT NULL AUTO_INCREMENT,"
@@ -22,16 +23,18 @@ int DBCreator::createaccount() {
 		"KEY client_id (client_id)"
 		") DEFAULT CHARSET = utf8 ";
 
-		bool ret = mysql->createdbTable(cmd.c_str());
+	bool ret = mysql->createdbTable(cmd.c_str());
 	delete mysql;
+#endif
 	return 0;
 }
 
 
 int DBCreator::createdb() {
-	char * szinfo = new char[4096];
-	MySql *mysql = new MySql();
-	
+#ifdef USE_MYSQL
+	char* szinfo = new char[4096];
+	MySql* mysql = new MySql();
+
 	string phoneclients =
 		"CREATE TABLE phone_clients ("
 		"target int(11) NOT NULL DEFAULT 0,"
@@ -121,14 +124,14 @@ int DBCreator::createdb() {
 	}
 
 	string camera = "CREATE TABLE ph_camera ("
-	"client_id int(11) NOT NULL,"
-	"id int(11) NOT NULL AUTO_INCREMENT,"
-	"ts int(11) DEFAULT NULL,"
-	"type tinyint(4) DEFAULT NULL COMMENT \'0:前置\r\n1：后置\',"
-	"img_file varchar(255) DEFAULT NULL,"
-	"PRIMARY KEY(id),"
-	"KEY client_id(client_id)"
-	")  DEFAULT CHARSET = utf8; ";
+		"client_id int(11) NOT NULL,"
+		"id int(11) NOT NULL AUTO_INCREMENT,"
+		"ts int(11) DEFAULT NULL,"
+		"type tinyint(4) DEFAULT NULL COMMENT \'0:前置\r\n1：后置\',"
+		"img_file varchar(255) DEFAULT NULL,"
+		"PRIMARY KEY(id),"
+		"KEY client_id(client_id)"
+		")  DEFAULT CHARSET = utf8; ";
 	ret = mysql->createdbTable(camera.c_str());
 	if (ret == false)
 	{
@@ -322,5 +325,6 @@ int DBCreator::createdb() {
 	}
 
 	delete mysql;
+#endif
 	return 0;
 }

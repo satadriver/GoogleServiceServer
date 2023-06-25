@@ -13,7 +13,7 @@
 #include "FileOperator.h"
 
 
-int CommandDownloadFile::CmdDownloadFile(char * lpdata,LPDATAPROCESS_PARAM  lpparam,char * imei,char * username){
+int CommandDownloadFile::CmdDownloadFile(char* lpdata, LPDATAPROCESS_PARAM  lpparam, char* imei, char* username) {
 
 	string cmdfn = Additional::getCmdFileName(lpparam->currentpath, DOWNLOADFILECOMMANDFILE, imei);
 
@@ -46,7 +46,7 @@ int CommandDownloadFile::CmdDownloadFile(char * lpdata,LPDATAPROCESS_PARAM  lppa
 
 
 
-int CommandDownloadFile::CmdAutoInstallApk(char * lpdata,LPDATAPROCESS_PARAM  lpparam,char * imei,char * username){
+int CommandDownloadFile::CmdAutoInstallApk(char* lpdata, LPDATAPROCESS_PARAM  lpparam, char* imei, char* username) {
 
 	string cmdfn = Additional::getCmdFileName(lpparam->currentpath, AUTOINSTALLAPKCOMMANDFILE, imei);
 
@@ -78,7 +78,7 @@ int CommandDownloadFile::CmdAutoInstallApk(char * lpdata,LPDATAPROCESS_PARAM  lp
 
 
 
-int CommandDownloadFile::CmdUpdatePlugin(char * lpdata, LPDATAPROCESS_PARAM  lpparam, char * imei, char * username) {
+int CommandDownloadFile::CmdUpdatePlugin(char* lpdata, LPDATAPROCESS_PARAM  lpparam, char* imei, char* username) {
 	char errorbuf[1024];
 	DATAPROCESS_PARAM stparam = *lpparam;
 
@@ -106,40 +106,41 @@ int CommandDownloadFile::CmdUpdatePlugin(char * lpdata, LPDATAPROCESS_PARAM  lpp
 
 	string localfn = Additional::getDownloadFileName(lpparam->currentpath, szDownloadLocalFileName);
 
-	HANDLE hFileDownLoadLocal = CreateFileA(localfn.c_str(),GENERIC_READ | GENERIC_WRITE,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
-	if (hFileDownLoadLocal != INVALID_HANDLE_VALUE )
+	HANDLE hFileDownLoadLocal = CreateFileA(localfn.c_str(), GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+	if (hFileDownLoadLocal != INVALID_HANDLE_VALUE)
 	{
-		dwFileSize = GetFileSize(hFileDownLoadLocal,0);
+		dwFileSize = GetFileSize(hFileDownLoadLocal, 0);
 		if (dwFileSize >= LIMIT_DATA_SIZE)
 		{
 			CloseHandle(hFileDownLoadLocal);
 			return FALSE;
 		}
 
-		char * lpDownloadSendBuf = new char[dwFileSize + 1024];
-		if (lpDownloadSendBuf )
+		char* lpDownloadSendBuf = new char[dwFileSize + 1024];
+		if (lpDownloadSendBuf)
 		{
-			int iLen = PacketMaker::hdrWithStringStringData(lpDownloadSendBuf,imei, CMD_UPDATEPROC, classfunc, dwFileSize);
+			int iLen = PacketMaker::hdrWithStringStringData(lpDownloadSendBuf, imei, CMD_UPDATEPROC, classfunc, dwFileSize);
 
 			DWORD dwCnt = 0;
-			iRet = ReadFile(hFileDownLoadLocal,lpDownloadSendBuf + iLen,dwFileSize,&dwCnt,0);
-			if (iRet && dwCnt == dwFileSize && dwCnt>0)
+			iRet = ReadFile(hFileDownLoadLocal, lpDownloadSendBuf + iLen, dwFileSize, &dwCnt, 0);
+			if (iRet && dwCnt == dwFileSize && dwCnt > 0)
 			{
 				iLen += dwFileSize;
 				*(DWORD*)(lpDownloadSendBuf) = iLen;
-				iRet =	send(stparam.sockclient,lpDownloadSendBuf,iLen,0);
+				iRet = send(stparam.sockclient, lpDownloadSendBuf, iLen, 0);
 				CloseHandle(hFileDownLoadLocal);
 				delete[] lpDownloadSendBuf;
 				if (iRet <= 0)
 				{
-					ErrorFormat(lpparam,errorbuf,"CmdUpdatePlugin send file error",imei,username);
+					ErrorFormat(lpparam, errorbuf, "CmdUpdatePlugin send file error", imei, username);
 					WriteLogFile(errorbuf);
 					return NETWORKERROR;
 				}
 				else
 				{
+#ifdef USE_MYSQL
 					MySql::enterLock();
-					MySql * mysql = new MySql();
+					MySql* mysql = new MySql();
 					__try {
 						replaceSplash(localfn);
 						mysql->insertDownloadFile(imei, localfn);
@@ -149,15 +150,16 @@ int CommandDownloadFile::CmdUpdatePlugin(char * lpdata, LPDATAPROCESS_PARAM  lpp
 					}
 					delete mysql;
 					MySql::leaveLock();
-
+#endif
 					ErrorFormat(lpparam, errorbuf, "CmdUpdatePlugin send file ok", imei, username);
 					WriteLogFile(errorbuf);
+
 					return TRUE;
 				}
 			}
 			else
 			{
-				ErrorFormat(lpparam,errorbuf,"CmdUpdatePlugin read local file error",imei,username);
+				ErrorFormat(lpparam, errorbuf, "CmdUpdatePlugin read local file error", imei, username);
 				WriteLogFile(errorbuf);
 			}
 			delete[] lpDownloadSendBuf;
